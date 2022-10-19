@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns='http://www.ehcache.org/v3'>
+	<cache alias="insumoDashboard">
+		<key-type>java.lang.Long</key-type>
+		<value-type>java.util.List</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="GB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="generarDashboardDTO">
+		<key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+		<value-type>java.lang.Object</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="generarDashboardDTOIdDt">
+		<key-type>java.lang.Long</key-type>
+		<value-type>java.lang.Object</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="generarParametrosDashboard">
+		<key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+		<value-type>java.lang.Object</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="traerTopTen">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.lang.Object</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="traerFuncionPreventiva">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.lang.Object</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="getExpedientes">
+		<key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+		<value-type>java.util.List</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="getExpedientesDts">
+		<key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+		<value-type>java.util.List</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="getProcesoByFilters">
+		<key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+		<value-type>java.util.List</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="consultarIndicadorProceso">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.List</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+	<cache alias="consultarIndicadoresProcesales">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.List</value-type>
+		<expiry>
+			<ttl unit="minutes">500</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+			<offheap unit="MB">1</offheap>
+		</resources>
+	</cache>
+</config>

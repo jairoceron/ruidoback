@@ -1,0 +1,7 @@
+Copiar estos archivos dentro de la carpeta
+
+%userprofile%\.m2   ->Explorador de Windows
+
+~/.m2/   ->Ir-Ir a la carpeta Mac
+
+

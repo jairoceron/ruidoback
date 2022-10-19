@@ -1,0 +1,52 @@
+package cimab.openaq.controller.ruido;
+
+import cimab.openaq.dataTransferObject.VariableSesionI;
+import cimab.openaq.entity.ruido.Pqrs;
+import cimab.openaq.entity.ruido.Visitas;
+import cimab.openaq.model.ConsultaVisita;
+import cimab.openaq.service.ruido.PqrsService;
+import cimab.openaq.service.ruido.RuidoService;
+import cimab.openaq.service.ruido.VisitaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "cimab/ruido")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
+public class VisitasController {
+
+    private PqrsService ps;
+    private VisitaService vs;
+
+    @Autowired
+    public void setPs(PqrsService ps) {
+        this.ps = ps;
+    }
+
+    @Autowired
+    public void setVs(VisitaService vs) {
+        this.vs = vs;
+    }
+
+    @RequestMapping({"/consultaVisita"})
+    public List<Pqrs> listFuncionariosRuido(@RequestBody ConsultaVisita consultaVisita ) {
+
+
+        List<Pqrs> listPqrs = ps.consultaPqrs();
+        System.out.println("Consulta si esta llegado GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
+        return listPqrs;
+    }
+
+    @RequestMapping({"/visitaPorRadicado"})
+    public List<Visitas> visitaPorRadicado(@RequestBody ConsultaVisita consultaVisita ) {
+
+
+        List<Visitas> listVisita = vs.visitasPorRadicado(consultaVisita);
+        // 'Aqui sacamos las visitas por radicado....
+        System.out.println("Consulta si esta llegado GDMPTLB :: " + consultaVisita + " listPqrs " + listVisita) ;
+        return listVisita;
+    }
+
+}
