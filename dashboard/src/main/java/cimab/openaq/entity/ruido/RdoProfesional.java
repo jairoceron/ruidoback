@@ -18,15 +18,19 @@ public class RdoProfesional {
             name = "rdoProfesionalSq",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "rdo_profesional_idprofesional_seq"),
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "sde.rdo_profesional_idprofesional_seq"),
                     @org.hibernate.annotations.Parameter(name = "initial_value", value = "9"),
                     @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")}
     )
 
     @Id
     @Column(name = "idprofesional")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProfesional;
 
     @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "username")
+    private String username;
 }

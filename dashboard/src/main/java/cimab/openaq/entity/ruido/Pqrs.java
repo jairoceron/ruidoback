@@ -40,6 +40,7 @@ public class Pqrs implements Serializable {
 
     @Id
     @Column(name="objectid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer objectid;
 
 

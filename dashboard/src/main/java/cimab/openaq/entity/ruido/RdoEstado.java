@@ -25,6 +25,7 @@ public class RdoEstado  implements Serializable {
 
     @Id
     @Column(name = "idestado")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAsunto;
 
     @Column(name = "nombre")

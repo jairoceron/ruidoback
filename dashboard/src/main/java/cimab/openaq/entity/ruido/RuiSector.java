@@ -28,6 +28,7 @@ public class RuiSector implements Serializable {
 
     @Id
     @Column(name = "idsector")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSector;
 
     @Column(name = "nombre")

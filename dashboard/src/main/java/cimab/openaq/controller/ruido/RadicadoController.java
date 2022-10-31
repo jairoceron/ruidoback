@@ -25,8 +25,16 @@ public class RadicadoController {
 
     @RequestMapping({"/guardaRadicado"})
     public Pqrs guardaRadicado(@RequestBody Pqrs pqrs ) {
-        System.out.println("Consulta si esta llegado GDMPTLB :: " + pqrs + " listPqrs " ) ;
+
         Pqrs pqrsX = rs.guardarRadicado( pqrs);
+
+        return pqrsX;
+    }
+
+    @RequestMapping({"/consultaRadicado"})
+    public Pqrs consultaRadicado(@RequestBody Pqrs pqrs ) {
+
+        Pqrs pqrsX = rs.consultaRadicado( pqrs);
         System.out.println("Consulta si esta llegado GDMPTLB :: " + pqrs + " listPqrs " ) ;
         return pqrsX;
     }

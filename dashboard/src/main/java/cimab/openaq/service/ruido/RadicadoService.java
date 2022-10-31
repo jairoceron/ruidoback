@@ -17,8 +17,12 @@ public class RadicadoService {
     }
 
     public Pqrs guardarRadicado(Pqrs pqrs) {
-        System.out.println("Radicado Service ... " + pqrs);
         pqr.save(pqrs);
         return pqrs;
+    }
+
+    public Pqrs consultaRadicado(Pqrs pqrs) {
+        Pqrs pqrsX = pqr.consultaPorRadicado(pqrs.getRadicado());
+        return pqrsX;
     }
 }

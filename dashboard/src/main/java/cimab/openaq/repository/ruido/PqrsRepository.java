@@ -17,4 +17,8 @@ public interface PqrsRepository extends JpaRepository<Pqrs, Integer> {
             "    where v.radicado = p.radicado ",
             nativeQuery = true)
     List<Pqrs> listPqrs();
+
+    @Query(value = "select * from sde.pqrs q where q.radicado = :radicado ",
+            nativeQuery = true)
+    Pqrs consultaPorRadicado(String radicado);
 }

@@ -2,6 +2,7 @@ package cimab.openaq.controller.ruido;
 
 import cimab.openaq.dataTransferObject.VariableSesionI;
 import cimab.openaq.entity.ruido.Pqrs;
+import cimab.openaq.entity.ruido.RdoVisita;
 import cimab.openaq.entity.ruido.Visitas;
 import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.service.ruido.PqrsService;
@@ -35,7 +36,7 @@ public class VisitasController {
 
 
         List<Pqrs> listPqrs = ps.consultaPqrs();
-        System.out.println("Consulta si esta llegado GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
+        System.out.println("Consulta 0022 GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
         return listPqrs;
     }
 
@@ -45,8 +46,21 @@ public class VisitasController {
 
         List<Visitas> listVisita = vs.visitasPorRadicado(consultaVisita);
         // 'Aqui sacamos las visitas por radicado....
-        System.out.println("Consulta si esta llegado GDMPTLB :: " + consultaVisita + " listPqrs " + listVisita) ;
+        System.out.println("Consulta 0033 GDMPTLB :: " + consultaVisita + " listPqrs " + listVisita) ;
         return listVisita;
+    }
+
+    @RequestMapping({"/guardaVisitaXX"})
+    public Visitas guardaVisitaXX(@RequestBody Visitas visita  ) {
+        Visitas rdoVisitaX = vs.guardaVisitaXX( visita);
+        return rdoVisitaX;
+    }
+
+    @RequestMapping({"/consultaVisitasProfesionalXX"})
+    public List<Visitas> consultaVisitasProfesional(@RequestBody String profesional  ) {
+        List<Visitas> listRdoVisitaX = vs.consultaVisitaPorProfesional(profesional);
+        System.out.println("lista ... de visitas ::: " + profesional  + " " + listRdoVisitaX);
+        return listRdoVisitaX;
     }
 
 }

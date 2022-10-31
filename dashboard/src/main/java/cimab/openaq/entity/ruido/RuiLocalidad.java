@@ -25,6 +25,7 @@ public class RuiLocalidad implements Serializable {
 
     @Id
     @Column(name = "idlocalidad")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idLocalidad;
 
     @Column(name = "nombre")

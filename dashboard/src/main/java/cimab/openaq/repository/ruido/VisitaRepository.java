@@ -1,5 +1,6 @@
 package cimab.openaq.repository.ruido;
 import cimab.openaq.entity.rmcab.Variableambiental;
+import cimab.openaq.entity.ruido.RdoVisita;
 import cimab.openaq.entity.ruido.Visitas;
 import cimab.openaq.entity.sbc.Sensoresestacion;
 import cimab.openaq.entity.sbc.Sensoresvariable;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -20,8 +22,20 @@ public interface  VisitaRepository  extends JpaRepository<Visitas, Long> {
             nativeQuery = true)
     List<String> listFuncionariosRuido();
 
-    @Query(value = "select * from sde.visitas where radicado = :idRadicado",
+    @Query(value = "select * from sde.visitas where radicado = :idRadicado order by id desc",
             nativeQuery = true)
     List<Visitas> listVisitasPorRadicado(String idRadicado);
+
+    @Query(value = "select * from sde.visitas where radicado = :idRadicado and profesional_encargado = :profesional_encargado and fechavisita is not null and fechavisita = :fechavisita ",
+            nativeQuery = true)
+    Visitas consultaSiYa_existe(String idRadicado, String profesional_encargado, java.sql.Timestamp fechavisita);
+
+    @Query(value = "select * from sde.visitas v, " +
+            "   sde.rdo_profesional rp where " +
+            "   rp.username = :profesional and " +
+            "   v.profesional_encargado = rp.nombre " +
+            "    order by fechavisita desc ",
+            nativeQuery = true)
+    List<Visitas> visitasPorProfesional(String profesional);
 
 }
