@@ -35,7 +35,7 @@ public class VisitasController {
     public List<Pqrs> listFuncionariosRuido(@RequestBody ConsultaVisita consultaVisita ) {
 
 
-        List<Pqrs> listPqrs = ps.consultaPqrs();
+        List<Pqrs> listPqrs = ps.consultaPqrs(consultaVisita);
         System.out.println("Consulta 0022 GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
         return listPqrs;
     }

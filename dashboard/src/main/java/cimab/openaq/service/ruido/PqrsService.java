@@ -2,6 +2,7 @@ package cimab.openaq.service.ruido;
 
 
 import cimab.openaq.entity.ruido.Pqrs;
+import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.repository.ruido.PqrsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class PqrsService {
         this.pr = pr;
     }
 
-    public List<Pqrs> consultaPqrs() {
-        return pr.listPqrs();
+    public List<Pqrs> consultaPqrs(ConsultaVisita consultaVisita) {
+        return pr.listPqrs(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal());
     }
 
 }

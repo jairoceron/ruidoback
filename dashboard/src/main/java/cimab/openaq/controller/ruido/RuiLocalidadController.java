@@ -1,6 +1,8 @@
 package cimab.openaq.controller.ruido;
+import cimab.openaq.dto.ruido.ChartLocalidad;
 import cimab.openaq.entity.ruido.RuiLocalidad;
 import cimab.openaq.entity.ruido.RuiSector;
+import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.service.ruido.RuiLocalidadService;
 import cimab.openaq.service.ruido.RuiSectorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +26,13 @@ public class RuiLocalidadController {
         List<RuiLocalidad> listRuiLocalidad = rls.consultaLocalidad();
         return listRuiLocalidad;
     }
+
+    @RequestMapping({"/chartlocalidad"})
+    public List<ChartLocalidad> chartLocalidadList(@RequestBody ConsultaVisita consultaVisita ) {
+
+        System.out.println("Consulta localidad ... " + consultaVisita) ;
+        List<ChartLocalidad> listChartLocalidad = rls.chartLocalidad(consultaVisita);
+        return listChartLocalidad;
+    }
+
 }

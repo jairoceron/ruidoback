@@ -1,5 +1,6 @@
 package cimab.openaq.controller.ruido;
 
+import cimab.openaq.dto.ruido.ChartGenerico;
 import cimab.openaq.entity.ruido.Pqrs;
 import cimab.openaq.entity.ruido.Visitas;
 import cimab.openaq.model.ConsultaVisita;
@@ -40,4 +41,10 @@ public class RadicadoController {
     }
 
 
+
+    @RequestMapping({"/chartEstadoTramite"})
+    public List<ChartGenerico> chartEstadoTramite(@RequestBody ConsultaVisita consultaVisita) {
+        List<ChartGenerico> listCharGeneri = rs.chartEstadoTramite(consultaVisita);
+        return listCharGeneri;
+    }
 }
