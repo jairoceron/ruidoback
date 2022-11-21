@@ -34,7 +34,8 @@ public class  RuidoDBConfig {
                                                                            @Qualifier("rdoXDataSource") DataSource dataSource) {
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", "none");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
+       //  properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
+        //spring.jpa.database-platform=org.hibernate.spatial.dialect.postgis.PostgisDialect
         return builder.dataSource(dataSource).properties(properties)
                 .packages("cimab.openaq.entity.ruido").persistenceUnit("Ruido").build();
     }

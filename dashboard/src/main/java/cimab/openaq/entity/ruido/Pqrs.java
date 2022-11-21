@@ -5,6 +5,15 @@ import javax.persistence.Id;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
+//import com.vividsolutions.jts.geom.Point ;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+//import org.locationtech.jts.geom.Point;
+//import org.locationtech.jts.geom.Point;
+import lombok.Getter;
+import lombok.Setter;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.PrecisionModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -21,11 +30,13 @@ import javax.persistence.*;
  * The persistent class for the calificacion database table.
  *
  */
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @NamedQuery(name="Pqrs.findAll", query="SELECT c FROM Pqrs c")
-@Table(name = "Pqrs", schema = "sde")
+// @Table(name = "Pqrs", schema = "sde")
+@Table(name = "Pqrs", schema = "public")
 public class Pqrs implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -110,4 +121,6 @@ public class Pqrs implements Serializable {
     @Column(name="globalid")
     private String globalid;
 
+    @Column(name="geom")
+    private Point  location;
 }

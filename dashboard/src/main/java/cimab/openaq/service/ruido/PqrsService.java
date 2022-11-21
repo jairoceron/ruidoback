@@ -20,6 +20,10 @@ public class PqrsService {
     }
 
     public List<Pqrs> consultaPqrs(ConsultaVisita consultaVisita) {
+
+      //  List<Pqrs> objects = pr.findAll();
+      //  System.out.println("----- objects " + objects );
+
         return pr.listPqrs(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal());
     }
 
