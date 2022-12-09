@@ -33,12 +33,19 @@ public class VisitasController {
 
     @RequestMapping({"/consultaVisita"})
     public List<Pqrs> listFuncionariosRuido(@RequestBody ConsultaVisita consultaVisita ) {
-
-
-
         List<Pqrs> listPqrs = ps.consultaPqrs(consultaVisita);
-        System.out.println("Consulta 0022 GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
+        System.out.println("Consulta 0022!!!! GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
         return listPqrs;
+    }
+
+    @RequestMapping({"/consultaDirecVisita"})
+    public List<Visitas> listConsultaDirecVisita(@RequestBody ConsultaVisita consultaVisita ) {
+        // List<Pqrs> listPqrs = ps.consultaPqrs(consultaVisita);
+        // *********
+        return vs.listConsultaDirecVisita(consultaVisita);
+
+       // System.out.println("Consulta 0022!!!! GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
+     //   return listPqrs;
     }
 
     @RequestMapping({"/visitaPorRadicado"})
@@ -62,6 +69,24 @@ public class VisitasController {
         List<Visitas> listRdoVisitaX = vs.consultaVisitaPorProfesional(profesional);
         System.out.println("lista ... de visitas ::: " + profesional  + " " + listRdoVisitaX);
         return listRdoVisitaX;
+    }
+
+    @RequestMapping({"/cargaDataExcel"})
+    public List<Visitas> cargaDataExcel(@RequestBody List<Visitas> listVisitas  ) {
+        System.out.println("Carga los datos del archivo de Excel ::: " + listVisitas);
+        vs.cargaDataExcel(listVisitas);
+
+        //
+        return null;
+    }
+
+    @RequestMapping({"/cargaDataExcelPQRS"})
+    public List<Visitas> cargaDataExcelPQRS(@RequestBody List<Pqrs> listPqrs  ) {
+        System.out.println("Carga los datos del archivo PRRS de Excel ::: " + listPqrs );
+        ps.cargaDataExcelPQRS(listPqrs);
+
+        //
+        return null;
     }
 
 }

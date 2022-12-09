@@ -18,7 +18,7 @@ public interface RuiLocalidadRepository extends JpaRepository<RuiLocalidad, Inte
 
     @Query(value = "select  localidad, count(1) from sde.pqrs p  " +
             "where p.localidad in (select nombre from sde.rdo_localidad)  " +
-            "and p.fecharadicado between :fechaInicial and :fechaFinal " +
+            "and p.fecha_del_radicado between :fechaInicial and :fechaFinal " +
             "group by p.localidad order by count(1) desc  ",
             nativeQuery = true)
     List<Object[]> chartLocalidad(Date fechaInicial, Date fechaFinal);

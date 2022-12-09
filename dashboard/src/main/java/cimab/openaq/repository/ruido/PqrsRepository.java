@@ -5,6 +5,7 @@ import cimab.openaq.entity.ruido.Pqrs;
 import cimab.openaq.entity.ruido.Visitas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
@@ -19,6 +20,9 @@ public interface PqrsRepository extends JpaRepository<Pqrs, Integer> {
             nativeQuery = true)
     List<Pqrs> listPqrs(Date fechaInicial, Date fechaFinal);
 
+
+
+
     @Query(value = "select * from sde.pqrs q where q.radicado = :radicado ",
             nativeQuery = true)
     Pqrs consultaPorRadicado(String radicado);
@@ -32,5 +36,14 @@ public interface PqrsRepository extends JpaRepository<Pqrs, Integer> {
             " group by e.nombre order by count(1) desc",
             nativeQuery = true)
     List<Object[]> chartEstadoTramite(Date fechaInicial, Date fechaFinal);
+
+
+    @Query(value = "select p.* from sde.pqrs p " +
+            "   where p.fecha_del_radicado between :fechaInicial and  :fechaFinal " +
+            "   and p.direcciones like %:direccion%",
+            nativeQuery = true)
+    List<Pqrs> pqrsPorDireccion(@Param("fechaInicial") Date fechaInicial,
+                                      @Param("fechaFinal") Date fechaFinal ,
+                                      @Param("direccion") String direccion);
 
 }

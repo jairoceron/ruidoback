@@ -14,6 +14,6 @@ public class ConsultaVisita {
     Date fechaInicial;
     Date fechaFinal;
     String radicado;
-
-
+    String direccion;
+    String vistaSistema;    // la vista del sistema puede ser: "PQRS por Localidad" -- "Estado Del Trámite"  -- "Provisionales"
 }

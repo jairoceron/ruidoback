@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -48,7 +49,7 @@ public class Visitas implements Serializable {
     private Integer objectid;
 
 
-    @Column(name = "año")
+    @Column(name = "ano")
     private Integer ano;
 
 
@@ -68,7 +69,7 @@ public class Visitas implements Serializable {
     private String radicado;
 
     @Column(name = "actividad_a_realizar_segun_plan")
-    private Integer actividad_a_realizar_segun_plan;
+    private String actividad_a_realizar_segun_plan;
 
     @Column(name = "estado_de_la_visita")
     private String estado_de_la_visita;
@@ -86,7 +87,7 @@ public class Visitas implements Serializable {
     private String observaciones_al_motivo;
 
     @Column(name = "numero_de_expediente")
-    private Integer numero_de_expediente;
+    private String numero_de_expediente;
 
     @Column(name = "proceso_actuacion_tecnica_o_res")
     private String proceso_actuacion_tecnica_o_res;
@@ -98,7 +99,7 @@ public class Visitas implements Serializable {
     private String razon_social;
 
     @Column(name = "codigo_ciiu")
-    private Integer codigo_ciiu;
+    private String codigo_ciiu;
 
     @Column(name = "matricula_mercantil")
     private String matricula_mercantil;
@@ -116,7 +117,7 @@ public class Visitas implements Serializable {
     private String telefono;
 
     @Column(name = "direccion__via_")
-    private Integer direccion__via_;
+    private String direccion__via_;
 
     @Column(name = "direccion__numero_")
     private Integer direccion__numero_;
@@ -125,10 +126,10 @@ public class Visitas implements Serializable {
     private String direccion__letra_;
 
     @Column(name = "direccion__bis_")
-    private Integer direccion__bis_;
+    private String direccion__bis_;
 
     @Column(name = "direccion__cuadrante_")
-    private Integer direccion__cuadrante_ ;
+    private String direccion__cuadrante_ ;
 
     @Column(name = "direccion__numero1")
     private Integer direccion__numero1;
@@ -143,19 +144,19 @@ public class Visitas implements Serializable {
     private String direccion__placa_;
 
     @Column(name = "direccion__cuadrante1")
-    private Integer direccion__cuadrante1;
+    private String direccion__cuadrante1;
 
     @Column(name = "tipo")
     private Integer tipo;
 
     @Column(name = "tipo_de_predio_generador_de_la_")
-    private Integer tipo_de_predio_generador_de_la_;
+    private String tipo_de_predio_generador_de_la_;
 
     @Column(name = "actividad_especifica")
     private String actividad_especifica;
 
     @Column(name = "localidad")
-    private Integer localidad ;
+    private String localidad ;
 
     @Column(name = "upz")
     private String upz;
@@ -167,19 +168,19 @@ public class Visitas implements Serializable {
     private String horario_de_la_visita;
 
     @Column(name = "lequemision_n_db_a_")
-    private Integer lequemision_n_db_a_;
+    private Float lequemision_n_db_a_;
 
     @Column(name = "sellamiento_codigo_de_la_polici")
-    private Integer sellamiento_codigo_de_la_polici;
+    private String sellamiento_codigo_de_la_polici;
 
     @Column(name = "valor_para_comparar_con_la_norm")
-    private Integer valor_para_comparar_con_la_norm;
+    private String valor_para_comparar_con_la_norm;
 
     @Column(name = "visita_programada")
     private Integer visita_programada;
 
     @Column(name = "area_de_actividad_segun_sinupot")
-    private Integer area_de_actividad_segun_sinupot;
+    private String area_de_actividad_segun_sinupot;
 
     @Column(name = "observaciones_de_area_de_activi")
     private String observaciones_de_area_de_activi;
@@ -203,5 +204,7 @@ public class Visitas implements Serializable {
     private String globalid ;
 
     @Column(name = "fechavisita")
+    //@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy'T'HH:mm:ss.SSS'Z'", timezone="Europe/Berlin")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
     private java.sql.Timestamp fechavisita ;
 }

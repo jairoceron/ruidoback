@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -37,5 +38,13 @@ public interface  VisitaRepository  extends JpaRepository<Visitas, Long> {
             "    order by fechavisita desc ",
             nativeQuery = true)
     List<Visitas> visitasPorProfesional(String profesional);
+
+    @Query(value = "select v.* from sde.visitas v " +
+            "   where v.fechavisita between :fechaInicial and  :fechaFinal " +
+            "   and direccion like %:direccion%",
+            nativeQuery = true)
+    List<Visitas> visitasPorDireccion(@Param("fechaInicial") Date fechaInicial,
+                                      @Param("fechaFinal") Date fechaFinal ,
+                                      @Param("direccion") String direccion);
 
 }
