@@ -88,4 +88,16 @@ public class PqrsService {
         return pr.pqrsPorDireccion(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getDireccion());
     }
 
+    public List<Pqrs> consultaPqrsLocalidad(ConsultaVisita consultaVisita){
+        return pr.pqrsPorLocalidad(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getLocalidad());
+    }
+
+    public List<Pqrs> consultaPqrsEstramite(ConsultaVisita consultaVisita){
+        return pr.consultaPqrsEstramite(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getEstadoTramite());
+    }
+
+    public List<Pqrs> consultaTipoPredio(ConsultaVisita consultaVisita){
+        return pr.consultaPqrsTipoPredio(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getTipoPredio());
+    }
+
 }

@@ -47,4 +47,19 @@ public class RadicadoController {
         List<ChartGenerico> listCharGeneri = rs.chartEstadoTramite(consultaVisita);
         return listCharGeneri;
     }
+
+    @RequestMapping({"/chartNoEsCompetencia"})
+    public List<ChartGenerico> chartNoEsCompetencia(@RequestBody ConsultaVisita consultaVisita) {
+        List<ChartGenerico> listCharNoCompe = rs.chartNoEsCompetencia(consultaVisita);
+        return listCharNoCompe;
+    }
+
+
+    @RequestMapping({"/chartProvisionalET"})
+    public List<ChartGenerico> chartProvisionalET(@RequestBody ConsultaVisita consultaVisita) {
+        List<ChartGenerico> listCharNoCompe = rs.chartProvisionalET(consultaVisita);
+        return listCharNoCompe;
+    }
+
+
 }

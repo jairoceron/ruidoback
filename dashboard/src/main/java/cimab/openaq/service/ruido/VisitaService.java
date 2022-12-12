@@ -1,14 +1,18 @@
 package cimab.openaq.service.ruido;
 
+import cimab.openaq.dto.ruido.ChartBarVertical2D;
+import cimab.openaq.dto.ruido.ChartGenerico;
 import cimab.openaq.entity.ruido.Visitas;
 import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.repository.rmcab.MenuRepository;
 import cimab.openaq.repository.ruido.VisitaRepository;
+import cimab.openaq.util.ListasChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -241,6 +245,31 @@ return visitas;
                 @Param("direccion") String direccion);
 
  */
+    }
+
+    public List<ChartBarVertical2D>   chart2dTipoPredioCumpliNorma(ConsultaVisita  consultaVisita){
+
+        List<String> lisTipoPredio = vr.visitasPorTipoPredio(consultaVisita.getFechaInicial(),
+                consultaVisita.getFechaFinal() );
+
+        List<ChartBarVertical2D> ltChar2D = new ArrayList<>();
+        for (String tipoPredio : lisTipoPredio) {
+            ChartBarVertical2D chart2D = new ChartBarVertical2D();
+            List<Object[]> listObj = vr.visitasCategoriasPorTipoPredio(
+                    consultaVisita.getFechaInicial(),
+                    consultaVisita.getFechaFinal(),
+                    tipoPredio);
+
+            ListasChart listaChart = new ListasChart();
+            List<ChartGenerico> ltChartGen = listaChart.genListaChartGenerico(listObj);
+            chart2D.setName(tipoPredio);
+            chart2D.setSeries(ltChartGen);
+            ltChar2D.add(chart2D);
+        }
+
+        System.out.println("xxxxxx:   " + ltChar2D);
+        return ltChar2D;
+
     }
 
 

@@ -1,6 +1,8 @@
 package cimab.openaq.controller.ruido;
 
 import cimab.openaq.dataTransferObject.VariableSesionI;
+import cimab.openaq.dto.ruido.ChartBarVertical2D;
+import cimab.openaq.dto.ruido.ChartGenerico;
 import cimab.openaq.entity.ruido.Pqrs;
 import cimab.openaq.entity.ruido.RdoVisita;
 import cimab.openaq.entity.ruido.Visitas;
@@ -88,5 +90,14 @@ public class VisitasController {
         //
         return null;
     }
+
+    @RequestMapping({"/chart2dTipoPredioCumpliNorma"})
+    public List<ChartBarVertical2D> chart2dTipoPredioCumpliNorma(@RequestBody ConsultaVisita consultaVisita) {
+        List<ChartBarVertical2D> listCharNoCompe = vs.chart2dTipoPredioCumpliNorma(consultaVisita);
+        System.out.println("List<ChartBarVertical2D>   " + listCharNoCompe);
+        return listCharNoCompe;
+    }
+
+
 
 }

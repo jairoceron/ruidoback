@@ -47,4 +47,26 @@ public interface  VisitaRepository  extends JpaRepository<Visitas, Long> {
                                       @Param("fechaFinal") Date fechaFinal ,
                                       @Param("direccion") String direccion);
 
+
+    @Query(value = "select v.tipo_de_predio_generador_de_la_ from sde.visitas v  " +
+            "where " +
+            "    v.fechavisita between :fechaInicial and :fechaFinal " +
+            "    group by v.tipo_de_predio_generador_de_la_  " +
+            "    order by v.tipo_de_predio_generador_de_la_",
+            nativeQuery = true)
+    List<String> visitasPorTipoPredio(@Param("fechaInicial") Date fechaInicial,
+                                      @Param("fechaFinal") Date fechaFinal );
+
+    @Query(value = "select v.cumplimiento_normativo, count(1) " +
+            "  from " +
+            "  sde.visitas v " +
+            "   where " +
+            "  v.tipo_de_predio_generador_de_la_ = :tipoPredio " +
+            "  and v.fechavisita between :fechaInicial and :fechaFinal " +
+            "  group by v.cumplimiento_normativo order by v.cumplimiento_normativo ",
+            nativeQuery = true)
+    List<Object[]> visitasCategoriasPorTipoPredio(@Param("fechaInicial") Date fechaInicial,
+                                      @Param("fechaFinal") Date fechaFinal,
+                                      @Param("tipoPredio") String tipoPredio);
+
 }
