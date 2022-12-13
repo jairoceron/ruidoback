@@ -61,5 +61,15 @@ public class RadicadoController {
         return listCharNoCompe;
     }
 
+    @RequestMapping({"/consultaOrganismoDeControl"})
+    public List<Pqrs> consultaOrganismoDeControl(@RequestBody ConsultaVisita consultaVisita) {
+
+        System.out.println("O r g a n i s m o   d e   C o n t r o l   ...... ");
+        List<Pqrs> consultaOrganismoDeControl = rs.consultaOrganismoDeControl(consultaVisita);
+
+
+        return consultaOrganismoDeControl;
+    }
+
 
 }

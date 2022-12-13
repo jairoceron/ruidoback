@@ -92,6 +92,13 @@ public interface PqrsRepository extends JpaRepository<Pqrs, Integer> {
                                 @Param("estadoTramite") String estadoTramite);
 
 
+    @Query(value = "select p.* from sde.pqrs p " +
+            "   where p.fecha_del_radicado between :fechaInicial and  :fechaFinal " +
+            "   and entidad_control = 'SI'",
+            nativeQuery = true)
+    List<Pqrs> consultaOrganismoControl(@Param("fechaInicial") Date fechaInicial,
+                                     @Param("fechaFinal") Date fechaFinal );
+
 
 
     @Query(value = "select q.* from sde.pqrs q where q.radicado in (select p.radicado from sde.visitas v, " +

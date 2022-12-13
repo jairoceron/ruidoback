@@ -71,4 +71,9 @@ public List<ChartGenerico> chartEstadoTramite(ConsultaVisita consultaVisita) {
         return listaChart.genListaChartGenerico(listChartEsTramite);
     }
 
+    public List<Pqrs> consultaOrganismoDeControl(ConsultaVisita consultaVisita) {
+
+        return pqr.consultaOrganismoControl(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal());
+    }
+
 }
