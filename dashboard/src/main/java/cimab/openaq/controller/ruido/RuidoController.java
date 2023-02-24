@@ -59,16 +59,16 @@ public class RuidoController {
 
     @GetMapping(path = "listFuncionariosRuido")
     public List<String> listFuncionariosRuido(@RequestParam(name = "marcaSensor", defaultValue = "0") int marcaSensor,
-                                                    @RequestParam(name = "codigoSensor", defaultValue = "0") String codigoSensor,
-                                                    @RequestParam(name = "promedio", defaultValue = "0") int promedio,
-                                                    @RequestParam(name = "variable", defaultValue = "0") int variable,
-                                                    @RequestParam(name = "fechaInicial", defaultValue = "31/08/2018") String fechaInicial,
-                                                    @RequestParam(name = "fechaFinal", defaultValue = "31/08/2018") String fechaFinal
+                                              @RequestParam(name = "codigoSensor", defaultValue = "0") String codigoSensor,
+                                              @RequestParam(name = "promedio", defaultValue = "0") int promedio,
+                                              @RequestParam(name = "variable", defaultValue = "0") int variable,
+                                              @RequestParam(name = "fechaInicial", defaultValue = "31/08/2018") String fechaInicial,
+                                              @RequestParam(name = "fechaFinal", defaultValue = "31/08/2018") String fechaFinal
     ) {
 
         System.out.println("Ingreso al controller ...... " + promedio);
 
-        return  ts.listFuncionariosRuido();
+        return ts.listFuncionariosRuido();
     }
 
     @RequestMapping({"/hello"})
@@ -79,14 +79,13 @@ public class RuidoController {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        System.out.println("Objeto JSON :: " + authenticationRequest );
-        System.out.println("Gracias Dios por todas la bendiciones :: " + authenticationRequest.getUsername());
+        System.out.println("Objeto JSON :: " + authenticationRequest);
+        System.out.println(" :: " + authenticationRequest.getUsername());
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
-        }
-        catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
 
@@ -98,13 +97,13 @@ public class RuidoController {
 
         AuthenticationResponse jwtX = new AuthenticationResponse(jwt);
         ResponseEntity xx = ResponseEntity.ok(jwtX);
-  //      xx.ok().header("modulo","ruido");
+        //      xx.ok().header("modulo","ruido");
 
-   //     HttpHeaders headers = new HttpHeaders();
-    //    headers.add("Custom-Header", "foo");
+        //     HttpHeaders headers = new HttpHeaders();
+        //    headers.add("Custom-Header", "foo");
 
 
-       // ResponseEntity<?> ff = new ResponseEntity("Hello World!", HttpStatus.OK,"ggg");
+        // ResponseEntity<?> ff = new ResponseEntity("Hello World!", HttpStatus.OK,"ggg");
         return xx;
         // return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }

@@ -81,4 +81,8 @@ public class Sensoresvariable implements Serializable {
     @Column(name="calidad_temperatura")
     private Integer calidad_temperatura;
 
+    @Column(name="calidad_humedadrelativa")
+    private Integer calidad_humedadrelativa;
+
+
 }

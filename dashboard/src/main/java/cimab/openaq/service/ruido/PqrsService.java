@@ -89,10 +89,12 @@ public class PqrsService {
     }
 
     public List<Pqrs> consultaPqrsLocalidad(ConsultaVisita consultaVisita){
+        System.out.println("Consulta ::: " + consultaVisita );
         return pr.pqrsPorLocalidad(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getLocalidad());
     }
 
     public List<Pqrs> consultaPqrsEstramite(ConsultaVisita consultaVisita){
+        System.out.println("Consulta Visita >>> .... " + consultaVisita );
         return pr.consultaPqrsEstramite(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getEstadoTramite());
     }
 

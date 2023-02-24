@@ -41,4 +41,22 @@ public class RuiLocalidadService {
         return listCharLocalidad;
     }
 
+    public List<ChartLocalidad> chartNormatividad(ConsultaVisita consultaVisita) {
+        List<ChartLocalidad> listCharNormatividad = new ArrayList<>();
+        List<Object[]> listObjNormatividad = lr.chartNormatividad(consultaVisita.getFechaInicial(),
+                consultaVisita.getFechaFinal(), Integer.valueOf(consultaVisita.getLocalidad())
+                ,consultaVisita.getTipoPredio());
+        for (Object[] objX : listObjNormatividad ) {
+            ChartLocalidad chartLocalidad = new ChartLocalidad();
+            String localidad = (String)objX[0];
+            BigInteger valor = (BigInteger)objX[1];
+            chartLocalidad.setName(localidad);
+            chartLocalidad.setValue(valor.intValue());
+            listCharNormatividad.add(chartLocalidad);
+        }
+
+        return listCharNormatividad;
+    }
+
+
 }

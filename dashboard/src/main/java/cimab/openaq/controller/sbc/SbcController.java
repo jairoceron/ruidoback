@@ -52,7 +52,7 @@ public class SbcController {
 
     @GetMapping(path = "latlongPoligionoEstaciones")
     List<Sensoresestacion> latlongPoligionoEstaciones()  {
-        System.out.println("Gracias Dios por este día de vida ......::: " );
+
 
         return ts.latlongPoligionoEstaciones();
     }

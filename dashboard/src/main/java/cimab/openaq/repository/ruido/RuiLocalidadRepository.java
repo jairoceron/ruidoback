@@ -23,4 +23,13 @@ public interface RuiLocalidadRepository extends JpaRepository<RuiLocalidad, Inte
             nativeQuery = true)
     List<Object[]> chartLocalidad(Date fechaInicial, Date fechaFinal);
 
+
+    @Query(value = "select cumplimiento_normativo  , count(1) from sde.visitas p  " +
+            "where p.localidad = (select nombre from sde.rdo_localidad l where l.idlocalidad = :localidad) " +
+            "and tipo_de_predio_generador_de_la_  = :tipoPredio " +
+            "and p.fechavisita between :fechaInicial and :fechaFinal " +
+            "group by p.cumplimiento_normativo order by count(1) desc   ",
+            nativeQuery = true)
+    List<Object[]> chartNormatividad(Date fechaInicial, Date fechaFinal, int localidad, String tipoPredio);
+
 }

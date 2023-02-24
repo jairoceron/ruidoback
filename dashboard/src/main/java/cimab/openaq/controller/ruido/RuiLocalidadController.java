@@ -51,4 +51,13 @@ public class RuiLocalidadController {
         return listChartLocalidad;
     }
 
+    @RequestMapping({"/chartNormatividad"})
+    public List<ChartLocalidad> chartNormatividad(@RequestBody ConsultaVisita consultaVisita ) {
+
+        System.out.println("Consulta CUMPLIMIENTO NORMATIVO ... " + consultaVisita) ;
+        List<ChartLocalidad> listChartLocalidad = rls.chartNormatividad(consultaVisita);
+        System.out.println("Esto es lo que retorna esto ::::: " + listChartLocalidad);
+        return listChartLocalidad;
+    }
+
 }
