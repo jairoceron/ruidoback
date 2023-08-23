@@ -27,7 +27,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     " and mu.usuario = :usuario",
             nativeQuery = true)
     List<String> listMenuModulo(String usuario);
-
+//************
 
 
 }
