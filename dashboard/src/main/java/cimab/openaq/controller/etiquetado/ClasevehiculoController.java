@@ -37,9 +37,9 @@ public class ClasevehiculoController {
     // @ResponseBody
     @RequestMapping({"/listClaseVehiculo"})
     public List<Clasevehiculo> listEstadoTramite() {
-        System.out.println("Si ingresa al servicios ::: Listado estado de listClaseVehiculo ........... " );
+        System.out.println("xxxxx Listado estado de listClaseVehiculo ........... " );
         List<Clasevehiculo> listClaseVehiculo = ts.listClaseVehiculos();
-        System.out.println("Listado estado de listClaseVehiculo ........... " + listClaseVehiculo);
+        System.out.println("!!!!!! Listado estado de listClaseVehiculo ........... " + listClaseVehiculo);
         return listClaseVehiculo;
 
     }

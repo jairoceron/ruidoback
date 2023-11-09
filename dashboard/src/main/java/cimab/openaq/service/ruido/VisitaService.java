@@ -32,6 +32,7 @@ public class VisitaService {
 
     public Visitas guardaVisitaXX(Visitas visitas) {
         System.out.println(" visitas " + visitas);
+        /*
         Visitas visitaXX = vr.consultaSiYa_existe(visitas.getRadicado(), visitas.getProfesional_encargado(), visitas.getFechavisita());
         if (visitaXX == null) {
             vr.save(visitas);
@@ -42,6 +43,8 @@ public class VisitaService {
             }
         }
 return visitas;
+        */
+        return null;
 
     }
 
@@ -53,6 +56,7 @@ return visitas;
     /* Carga directamente el archivo de excel utilizando el front */
     /* import * as XLSX from 'xlsx'; */
     public void cargaDataExcel(List<Visitas> listVisitas) {
+        /*
         for (Visitas visita : listVisitas) {
             if (visita.getBarrio() != null) {
                 if (visita.getBarrio().length() > 299 ) {
@@ -232,6 +236,8 @@ return visitas;
 
         }
         vr.saveAll(listVisitas);
+        */
+
     }
 
     public List<Visitas>  listConsultaDirecVisita(ConsultaVisita consultaVisita ) {
@@ -268,7 +274,10 @@ return visitas;
         }
 
         System.out.println("xxxxxx:   " + ltChar2D);
-        return ltChar2D;
+
+
+         return ltChar2D;
+        //return null;
 
     }
 

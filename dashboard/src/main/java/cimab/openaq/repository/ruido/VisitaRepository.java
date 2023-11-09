@@ -27,7 +27,7 @@ public interface  VisitaRepository  extends JpaRepository<Visitas, Long> {
             nativeQuery = true)
     List<Visitas> listVisitasPorRadicado(String idRadicado);
 
-    @Query(value = "select * from sde.visitas where radicado = :idRadicado and profesional_encargado = :profesional_encargado and fechavisita is not null and fechavisita = :fechavisita ",
+    @Query(value = "select * from sde.visitas where radicado = :idRadicado and profesional_encargado = :profesional_encargado and fecha_hora is not null and fecha_hora = :fechavisita ",
             nativeQuery = true)
     Visitas consultaSiYa_existe(String idRadicado, String profesional_encargado, java.sql.Timestamp fechavisita);
 
@@ -35,38 +35,49 @@ public interface  VisitaRepository  extends JpaRepository<Visitas, Long> {
             "   sde.rdo_profesional rp where " +
             "   rp.username = :profesional and " +
             "   v.profesional_encargado = rp.nombre " +
-            "    order by fechavisita desc ",
+            "    order by fecha_hora desc ",
             nativeQuery = true)
     List<Visitas> visitasPorProfesional(String profesional);
 
     @Query(value = "select v.* from sde.visitas v " +
-            "   where v.fechavisita between :fechaInicial and  :fechaFinal " +
+            "   where v.fecha_hora between :fechaInicial and  :fechaFinal " +
             "   and direccion like %:direccion%",
             nativeQuery = true)
-    List<Visitas> visitasPorDireccion(@Param("fechaInicial") Date fechaInicial,
-                                      @Param("fechaFinal") Date fechaFinal ,
+    List<Visitas> visitasPorDireccion(@Param("fechaInicial") java.sql.Timestamp fechaInicial,
+                                      @Param("fechaFinal") java.sql.Timestamp fechaFinal ,
                                       @Param("direccion") String direccion);
 
 
-    @Query(value = "select v.tipo_de_predio_generador_de_la_ from sde.visitas v  " +
+    @Query(value = "select v.tipo_predio_generador_emision from sde.visitas v  " +
             "where " +
-            "    v.fechavisita between :fechaInicial and :fechaFinal " +
-            "    group by v.tipo_de_predio_generador_de_la_  " +
-            "    order by v.tipo_de_predio_generador_de_la_",
+            "    v.fecha_hora  between :fechaInicial and :fechaFinal " +
+            "    group by v.tipo_predio_generador_emision  " +
+            "    order by v.tipo_predio_generador_emision",
             nativeQuery = true)
-    List<String> visitasPorTipoPredio(@Param("fechaInicial") Date fechaInicial,
-                                      @Param("fechaFinal") Date fechaFinal );
+    List<String> visitasPorTipoPredio(@Param("fechaInicial") java.sql.Timestamp fechaInicial,
+                                      @Param("fechaFinal") java.sql.Timestamp fechaFinal );
 
     @Query(value = "select v.cumplimiento_normativo, count(1) " +
             "  from " +
             "  sde.visitas v " +
             "   where " +
-            "  v.tipo_de_predio_generador_de_la_ = :tipoPredio " +
-            "  and v.fechavisita between :fechaInicial and :fechaFinal " +
+            "  v.tipo_predio_generador_emision = :tipoPredio " +
+            "  and v.fecha_hora between :fechaInicial and :fechaFinal " +
             "  group by v.cumplimiento_normativo order by v.cumplimiento_normativo ",
             nativeQuery = true)
-    List<Object[]> visitasCategoriasPorTipoPredio(@Param("fechaInicial") Date fechaInicial,
-                                      @Param("fechaFinal") Date fechaFinal,
+    List<Object[]> visitasCategoriasPorTipoPredio(@Param("fechaInicial") java.sql.Timestamp fechaInicial,
+                                      @Param("fechaFinal") java.sql.Timestamp fechaFinal,
                                       @Param("tipoPredio") String tipoPredio);
+
+
+    @Query(value = "select v.* from sde.visitas v  " +
+            "where " +
+            "    v.fecha_hora  between :fechaInicial and :fechaFinal " +
+            "  and estado_visita = :VISITA_NO_EF_REP  " +
+            "    ",
+            nativeQuery = true)
+    List<Visitas> visitasNoEfectivaReprogramas(@Param("fechaInicial") java.sql.Timestamp fechaInicial,
+                                      @Param("fechaFinal") java.sql.Timestamp fechaFinal , String VISITA_NO_EF_REP );
+
 
 }

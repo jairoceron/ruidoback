@@ -1,7 +1,12 @@
 package cimab.openaq.controller.etiquetado;
 
+import cimab.openaq.entity.etiqoracle.EvaEtiquetado;
+import cimab.openaq.entity.etiqoracle.Informacionvehiculo;
+import cimab.openaq.entity.etiqoracle.TipologiaVehicular;
 import cimab.openaq.entity.etiquetado.Categoria;
 import cimab.openaq.entity.etiquetado.Cilindrada;
+import cimab.openaq.service.etiqoracle.TipologiaVehicularService;
+import cimab.openaq.service.etiqoracle.util.FactorAmbiVehicular;
 import cimab.openaq.service.etiquetado.CategoriaService;
 import cimab.openaq.service.etiquetado.CilindradaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +30,22 @@ import java.util.List;
 
 public class CategoriaController {
     private CategoriaService ts;
+    private TipologiaVehicularService tvs;
+    private FactorAmbiVehicular fva;
 
     @Autowired
     public void setTs(CategoriaService ts) {
         this.ts = ts;
+    }
+
+    @Autowired
+    public void setFva(FactorAmbiVehicular fva) {
+        this.fva = fva;
+    }
+
+    @Autowired
+    public void setTvs(TipologiaVehicularService tvs) {
+        this.tvs = tvs;
     }
 
 
@@ -39,6 +56,25 @@ public class CategoriaController {
         System.out.println("Listado estado de listClaseVehiculo ........... " + listCategoria);
         return listCategoria ;
 
+    }
+
+    @RequestMapping({"/listTipologiaVehicular"})
+    public List<TipologiaVehicular> listTipologiaVehicular(@RequestBody Integer idclasevehiculo) {
+        System.out.println("tipologia vehicular  ........... " );
+        List<TipologiaVehicular> listTipologiaVehicular = tvs.listTipologiaVehicular();
+        System.out.println("tipologia vehicular  .......... " + listTipologiaVehicular);
+        return listTipologiaVehicular;
+
+    }
+
+    @RequestMapping({"/calculoFactosAmbiVehicular"})
+    public EvaEtiquetado calculoFactosAmbiVehicular(@RequestBody Informacionvehiculo infoVehiculo) {
+        System.out.println("CategoriaController :::  calculoFactosAmbiVehicular  ........... " );
+
+        EvaEtiquetado evaEtiquetado = fva.calculoFactosAmbiVehicular(infoVehiculo);
+        System.out.println("tipologia vehicular  .......... " + evaEtiquetado);
+        return evaEtiquetado;
+                //9999999999999999999999999999999999999999999999
     }
 
 }

@@ -3,6 +3,7 @@ package cimab.openaq.model;
 import lombok.Data;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 public class ConsultaVisita {
@@ -11,12 +12,21 @@ public class ConsultaVisita {
     *
     * */
 
-    Date fechaInicial;
-    Date fechaFinal;
+    Timestamp fechaInicial;
+    Timestamp fechaFinal;
     String radicado;
     String direccion;
     String vistaSistema;    // la vista del sistema puede ser: "PQRS por Localidad" -- "Estado Del Trámite"  -- "Provisionales"
     String localidad;
-    String estadoTramite;
+
     String tipoPredio;
+    Boolean isCbCVencido;
+    Boolean isCbCPxVenci;
+    Boolean isCbCPxSinVe;
+    String peticionario;
+
+    String estadoTramite;
+    String observacionEstadoTramite;
+
+
 }

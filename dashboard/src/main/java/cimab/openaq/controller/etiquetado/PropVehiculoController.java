@@ -36,17 +36,28 @@ public class PropVehiculoController {
 
     @RequestMapping({"/guardaPropietarioVehiculo"})
     public Propietariovehiculo guardaPropVehiculo(@RequestBody Propietariovehiculo propietarioVehiculo) {
+
+        System.out.println("Propietario Vehiculo :::: " + propietarioVehiculo) ;
         pvs.guardaPropVehiculo(propietarioVehiculo);
         return propietarioVehiculo;
     }
 
     @RequestMapping({"/listaPropietarioVehiculo"})
     public List<Propietariovehiculo> listaPropietarioVehiculo(@RequestBody String placa) {
+        System.out.println("Ingresa a listado prop vehiculo ....... " + placa);
 
         List<Propietariovehiculo>  listPropVehiculo = pvs.listaaPropietarioVehiculooo(placa);
 
         return listPropVehiculo;
     }
+
+    @RequestMapping({"/propietarioVehiculoPlaca"})
+    public Propietariovehiculo propietarioVehiculoPlaca(@RequestBody Propietariovehiculo propietarioVehiculo) {
+        Propietariovehiculo propietaVehiculoX = pvs.PropietariovehiculoXplaca(propietarioVehiculo.getPlaca());
+        System.out.println("Datos del propietario del vehiculo ... " + propietaVehiculoX );
+        return propietaVehiculoX;
+    }
+
 
     @RequestMapping({"/guardaInformacionVehiculo"})
     public Informacionvehiculo guardaInformacionVehiculo(@RequestBody Informacionvehiculo informacionvehiculo) {

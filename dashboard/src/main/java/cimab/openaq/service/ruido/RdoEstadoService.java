@@ -2,6 +2,7 @@ package cimab.openaq.service.ruido;
 
 import cimab.openaq.entity.ruido.RdoAsunto;
 import cimab.openaq.entity.ruido.RdoEstado;
+import cimab.openaq.entity.ruido.RdoEstadoTramite;
 import cimab.openaq.repository.ruido.RdoAsuntoRepository;
 import cimab.openaq.repository.ruido.RdoEstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,14 @@ public class RdoEstadoService {
     }
 
     public List<RdoEstado> consultaEstado() {
+      //  return null;
         return ar.listEstado();
+    }
+
+
+
+    public List<String> consultaEstadoNombre() {
+        //  return null;
+        return ar.listEstadoString();
     }
 }

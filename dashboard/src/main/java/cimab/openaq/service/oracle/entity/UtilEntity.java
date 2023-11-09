@@ -1,6 +1,6 @@
 package cimab.openaq.service.oracle.entity;
 
-import cimab.openaq.entity.rmcaboracle.AllTabsColumns;
+import cimab.openaq.entity.etiqoracle.AllTabsColumns;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

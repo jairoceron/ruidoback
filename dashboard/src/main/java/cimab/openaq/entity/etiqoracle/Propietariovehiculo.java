@@ -38,5 +38,9 @@ public class Propietariovehiculo {
     @Column(name = "tipoidentifica")
     BigInteger tipoidentifica;
 
+    @Column(name = "email")
+    String email;
 
+    @Column(name = "telefono")
+    String telefono;
 }

@@ -3,6 +3,7 @@ import cimab.openaq.dto.ruido.ChartLocalidad;
 import cimab.openaq.entity.ruido.Pqrs;
 import cimab.openaq.entity.ruido.RuiLocalidad;
 import cimab.openaq.entity.ruido.RuiSector;
+import cimab.openaq.entity.ruido.RuidoLocalidad;
 import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.service.ruido.PqrsService;
 import cimab.openaq.service.ruido.RuiLocalidadService;
@@ -28,10 +29,17 @@ public class RuiLocalidadController {
         this.ps = ps;
     }
 
-    @RequestMapping({"/consultaLocalidad"})
+    @RequestMapping({"/consultaLocalidadXXXX"})
     public List<RuiLocalidad> consultaSector(@RequestBody RuiSector ruiSector ) {
 
         List<RuiLocalidad> listRuiLocalidad = rls.consultaLocalidad();
+        return listRuiLocalidad;
+    }
+
+    @RequestMapping({"/consultaLocalidad"})
+    public List<RuidoLocalidad> consultaLocalidad(@RequestBody RuiSector ruiSector ) {
+
+        List<RuidoLocalidad> listRuiLocalidad = rls.consultaRuidoLocalidad();
         return listRuiLocalidad;
     }
 
@@ -41,6 +49,7 @@ public class RuiLocalidadController {
         List<Pqrs> listPqrs = ps.consultaPqrsLocalidad(consultaVisita);
         System.out.println(listPqrs);
         return listPqrs;
+      //  return null;
     }
 
     @RequestMapping({"/chartlocalidad"})

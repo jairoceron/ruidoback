@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @NamedQuery(name="RuiLocalidad.findAll", query="SELECT c FROM RuiLocalidad c")
-@Table(name = "rdo_localidad", schema = "sde")
+@Table(name = "localidades", schema = "sde")
 public class RuiLocalidad implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -24,11 +24,11 @@ public class RuiLocalidad implements Serializable {
     )
 
     @Id
-    @Column(name = "idlocalidad")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idLocalidad;
 
-    @Column(name = "nombre")
+    @Column(name = "localidad")
     private String nombre;
 
 }

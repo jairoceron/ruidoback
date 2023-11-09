@@ -32,7 +32,16 @@ public class UtilFileXml {
     }
 
     public void createNewFile(String path, String nameFile, String placa, String dirQrHolograma) {
+
+        System.out.println("Creacion del nuevo archivo ::: path              " + path);
+        System.out.println("Creacion del nuevo archivo ::: nameFile          " + nameFile);
+        System.out.println("Creacion del nuevo archivo ::: placa             " + placa);
+        System.out.println("Creacion del nuevo archivo ::: dirQrHolograma    " + dirQrHolograma);
+
+
+
         String nameFL = path + nameFile;
+        System.out.println("ubicacion del archivo xml creado nuevo::: 20230824    " + nameFL);
         try {
             FileOutputStream fos = new FileOutputStream(nameFL, false);  // true for append mode
             System.out.print("Enter file content: ");

@@ -2,6 +2,7 @@ package cimab.openaq.controller.ruido;
 
 import cimab.openaq.dto.ruido.ChartGenerico;
 import cimab.openaq.entity.ruido.Pqrs;
+import cimab.openaq.entity.ruido.PqrsDTO;
 import cimab.openaq.entity.ruido.Visitas;
 import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.service.ruido.PqrsService;
@@ -28,7 +29,15 @@ public class RadicadoController {
     public Pqrs guardaRadicado(@RequestBody Pqrs pqrs ) {
 
         Pqrs pqrsX = rs.guardarRadicado( pqrs);
+        return pqrsX;
+    }
 
+
+
+    @RequestMapping({"/updateRadicado"})
+    public Pqrs updateRadicado(@RequestBody Pqrs pqrs ) {
+        System.out.println("Si ingresa el update Radicado");
+        Pqrs pqrsX = rs.guardarRadicado( pqrs);
         return pqrsX;
     }
 
@@ -71,5 +80,38 @@ public class RadicadoController {
         return consultaOrganismoDeControl;
     }
 
+    @RequestMapping({"/visitaNoEfectivaReprograma"})
+    public List<PqrsDTO> visitaNoEfectivaReprograma(@RequestBody ConsultaVisita consultaVisita) {
+
+        System.out.println("Visita NO Efectiva :: Reprogramar   ...... ");
+        List<PqrsDTO> listVisitaNoEfectiva = rs.visitaNoEfectivaReprograma(consultaVisita);
+
+        return listVisitaNoEfectiva;
+    }
+
+    @RequestMapping({"/visitaPorPeticionario"})
+    public List<PqrsDTO> visitaPorPeticionario(@RequestBody ConsultaVisita consultaVisita) {
+
+        System.out.println("Visita visitaPorPeticionario   ...... ");
+        List<PqrsDTO> listVisitaNoEfectiva = rs.visitaPorPeticionario(consultaVisita);
+
+        return listVisitaNoEfectiva;
+    }
+
+    @RequestMapping({"/visitaPorReporteAntecedente"})
+    public List<PqrsDTO> visitaPorReporteAntecedente(@RequestBody ConsultaVisita consultaVisita) {
+
+        System.out.println("Visita visitaPorReporteAntecedente   ...... ");
+        List<PqrsDTO> listVisitaNoEfectiva = rs.reporteDeAntecedentes(consultaVisita);
+        return listVisitaNoEfectiva;
+    }
+
+    @RequestMapping({"/visitaConsultaNoEsCompetencia"})
+    public List<PqrsDTO> visitaConsultaNoEsCompetencia(@RequestBody ConsultaVisita consultaVisita) {
+
+        System.out.println("Visita visitaConsultaNoEsCompetencia   ...... ");
+        List<PqrsDTO> listVisitaNoEfectiva = rs.visitaConsultaNoEsCompetencia(consultaVisita);
+        return listVisitaNoEfectiva;
+    }
 
 }

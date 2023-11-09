@@ -23,6 +23,9 @@ public class RdoAsuntoController {
     public List<RdoAsunto> consultaSector(@RequestBody RuiSector ruiSector ) {
 
         List<RdoAsunto> listRuiLocalidad = ras.consultaAsunto();
+
+
+      //  ****
         return listRuiLocalidad;
     }
 }

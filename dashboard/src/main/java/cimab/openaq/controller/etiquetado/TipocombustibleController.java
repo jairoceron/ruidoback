@@ -44,9 +44,9 @@ public class TipocombustibleController {
 
     @RequestMapping({"/listTipoCombustible"})
     public List<Tipocombustible> listTipoCombustible(@RequestBody Integer idclasevehiculo) {
-        System.out.println("Si ingresa al servicios ::: Listado estado de listClaseVehiculo ........... " );
+        System.out.println("Si ingresa al servicios ::: Listado estado de list Tipo combustibre ........... " );
         List<Tipocombustible> listTipoCombustible = ts.listTipoCombustible(idclasevehiculo);
-        System.out.println("Listado estado de listClaseVehiculo ........... " + listTipoCombustible);
+        System.out.println("Listado estado de list Tipo combustible ::: " + listTipoCombustible);
         return listTipoCombustible;
 
     }

@@ -2,6 +2,7 @@ package cimab.openaq.entity.ruido;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
@@ -40,171 +41,221 @@ public class Visitas implements Serializable {
     )
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-
     @Column(name = "objectid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer objectid;
 
+    @Column(name = "fecha_hora")
+    Timestamp fecha_hora; //  timestamp NOT NULL,
 
-    @Column(name = "ano")
-    private Integer ano;
+    @Column(name = "profesional_encargado_visita")
+    String profesional_encargado_visita; //  varchar(50) NOT NULL,
+
+    @Column(name = "radicado_atendido")
+    String radicado_atendido; //  varchar(300) NULL,
+
+    @Column(name = "actividad_segun_plan_trabajo")
+    String actividad_segun_plan_trabajo; //  varchar(255) NOT NULL,
+
+    @Column(name = "estado_visita")
+    String estado_visita; //  varchar(255) NOT NULL,
+
+    @Column(name = "visi_no_efectiva_motivo_repro")
+    String visi_no_efectiva_motivo_repro; //  varchar(410) NOT NULL,
 
 
-    @Column(name = "mes")
-    private String mes;
+    @Column(name = "periodo_reprogramar_visita")
+    String periodo_reprogramar_visita; //  varchar(50) NULL,
 
-    @Column(name = "latitud")
-    private Float latitud;
 
-    @Column(name = "longitud")
-    private Float longitud;
+    @Column(name = "periodo_desde")
+    Timestamp periodo_desde; //  timestamp NULL,
 
-    @Column(name = "profesional_encargado")
-    private String profesional_encargado;
 
-    @Column(name = "radicado")
-    private String radicado;
+    @Column(name = "perido_hasta")
+    Timestamp perido_hasta; //  timestamp NULL,
 
-    @Column(name = "actividad_a_realizar_segun_plan")
-    private String actividad_a_realizar_segun_plan;
 
-    @Column(name = "estado_de_la_visita")
-    private String estado_de_la_visita;
+    @Column(name = "efectiva_cerrar_caso_motivo")
+    String efectiva_cerrar_caso_motivo; //  varchar(130) NULL,
 
-    @Column(name = "solo_si_la_visita_no_fue_efecti")
-    private String solo_si_la_visita_no_fue_efecti;
 
-    @Column(name = "solo_si_la_visita_fue_efectiva_")
-    private String solo_si_la_visita_fue_efectiva_;
+    @Column(name = "numero_expediente")
+    String numero_expediente; //  varchar(50) NULL,
 
-    @Column(name = "gestion")
-    private String gestion;
 
-    @Column(name = "observaciones_al_motivo")
-    private String observaciones_al_motivo;
+    @Column(name = "id_visita_ivc_forest")
+    String id_visita_ivc_forest; //  varchar(50) NULL,
 
-    @Column(name = "numero_de_expediente")
-    private String numero_de_expediente;
 
-    @Column(name = "proceso_actuacion_tecnica_o_res")
-    private String proceso_actuacion_tecnica_o_res;
+    @Column(name = "tipo_predio_generador_emision")
+    String tipo_predio_generador_emision; //  varchar(50) NOT NULL,
+
+
+    @Column(name = "matricula_mercantil_rues")
+    String matricula_mercantil_rues; //  varchar(250) NULL,
+
+
+    @Column(name = "nit_rues")
+    String nit_rues; //  varchar(50) NULL,
+
 
     @Column(name = "nombre_comercial")
-    private String nombre_comercial;
+    String nombre_comercial; //  varchar(50) NULL,
 
-    @Column(name = "razon_social")
-    private String razon_social;
+    @Column(name = "razon_social_rues")
+    String razon_social_rues; //  varchar(50) NULL,
 
-    @Column(name = "codigo_ciiu")
-    private String codigo_ciiu;
+    @Column(name = "representante_legal_propetario_")
+    String representante_legal_propetario_; //  varchar(50) NULL,
 
-    @Column(name = "matricula_mercantil")
-    private String matricula_mercantil;
+    @Column(name = "tipo_de_documeto")
+    String tipo_de_documeto; //  varchar(50) NOT NULL,
 
-    @Column(name = "nit")
-    private String nit;
-
-    @Column(name = "representante_legal")
-    private String representante_legal;
-
-    @Column(name = "numero")
-    private String numero;
+    @Column(name = "id_representante_legal_propetar")
+    String id_representante_legal_propetar; //  varchar(50) NULL,
 
     @Column(name = "telefono")
-    private String telefono;
+    String telefono; //  varchar(50) NULL,
 
-    @Column(name = "direccion__via_")
-    private String direccion__via_;
 
-    @Column(name = "direccion__numero_")
-    private Integer direccion__numero_;
+    @Column(name = "codigo_ciiu")
+    Integer codigo_ciiu; //  int2 NULL,
 
-    @Column(name = "direccion__letra_")
-    private String direccion__letra_;
+    @Column(name = "direccion_via")
+    String direccion_via; //  varchar(50) NOT NULL,
 
-    @Column(name = "direccion__bis_")
-    private String direccion__bis_;
 
-    @Column(name = "direccion__cuadrante_")
-    private String direccion__cuadrante_ ;
+    @Column(name = "direccion_numero")
+    Integer direccion_numero; //  int2 NOT NULL,
 
-    @Column(name = "direccion__numero1")
-    private Integer direccion__numero1;
 
-    @Column(name = "direccion__letra1")
-    private String direccion__letra1;
+    @Column(name = "direccion_letra")
+    String direccion_letra; //  varchar(50) NULL,
 
-    @Column(name = "direccion__bis1")
-    private String direccion__bis1;
 
-    @Column(name = "direccion__placa_")
-    private String direccion__placa_;
+    @Column(name = "direccion_bis")
+    String direccion_bis; //  varchar(50) NULL,
 
-    @Column(name = "direccion__cuadrante1")
-    private String direccion__cuadrante1;
+    @Column(name = "direccion_letra_2")
+    String direccion_letra_2; //  varchar(50) NULL,
 
-    @Column(name = "tipo")
-    private Integer tipo;
 
-    @Column(name = "tipo_de_predio_generador_de_la_")
-    private String tipo_de_predio_generador_de_la_;
+    @Column(name = "direccion_bis_2")
+    String direccion_bis_2; //  varchar(50) NULL,
 
-    @Column(name = "actividad_especifica")
-    private String actividad_especifica;
+
+    @Column(name = "direccion_cuadrante")
+    String direccion_cuadrante; //  varchar(50) NULL,
+
+
+    @Column(name = "direccion_numero_2")
+    Integer direccion_numero_2; //  int2 NOT NULL,
+
+
+    @Column(name = "direccion_letra_3")
+    String direccion_letra_3; //  varchar(50) NULL,
+
+
+    @Column(name = "direccion_bis_3")
+    String direccion_bis_3; //  varchar(50) NULL,
+
+
+    @Column(name = "direccion_placa")
+    Integer direccion_placa; //  int2 NOT NULL,
+
+
+    @Column(name = "direccion_cuadrante_2")
+    String direccion_cuadrante_2; //  varchar(50) NULL,
+
+
+    @Column(name = "complemento_direccion")
+    String complemento_direccion; //  varchar(50) NULL,
+
+
+    @Column(name = "direccion_completa")
+    String direccion_completa; //  varchar(50) NOT NULL,
+
+
+    @Column(name = "x")
+    BigDecimal x; //  numeric(38, 8) NULL,
+
+
+    @Column(name = "y")
+    BigDecimal y; //  numeric(38, 8) NULL,
+
 
     @Column(name = "localidad")
-    private String localidad ;
+    Integer localidad; //  int2 NOT NULL,
+
 
     @Column(name = "upz")
-    private String upz;
+    String upz; //  varchar(50) NOT NULL,
+
+
+    @Column(name = "upl")
+    String upl; //  varchar(50) NOT NULL,
+
 
     @Column(name = "cumplimiento_normativo")
-    private String cumplimiento_normativo;
+    String cumplimiento_normativo; //  varchar(50) NULL,
 
-    @Column(name = "horario_de_la_visita")
-    private String horario_de_la_visita;
 
-    @Column(name = "lequemision_n_db_a_")
-    private Float lequemision_n_db_a_;
+    @Column(name = "leqemision_dba")
+    BigDecimal leqemision_dba; //  numeric(38, 8) NULL,
 
-    @Column(name = "sellamiento_codigo_de_la_polici")
-    private String sellamiento_codigo_de_la_polici;
 
-    @Column(name = "valor_para_comparar_con_la_norm")
-    private String valor_para_comparar_con_la_norm;
+    @Column(name = "valor_en_db_res_0627_2006")
+    String valor_en_db_res_0627_2006; //  varchar(50) NULL,
 
-    @Column(name = "visita_programada")
-    private Integer visita_programada;
 
-    @Column(name = "area_de_actividad_segun_sinupot")
-    private String area_de_actividad_segun_sinupot;
+    @Column(name = "area_de_activ_sinupot_dec_1")
+    String area_de_activ_sinupot_dec_1; //  varchar(50) NOT NULL,
 
-    @Column(name = "observaciones_de_area_de_activi")
-    private String observaciones_de_area_de_activi;
 
-    @Column(name = "tipo_documento")
-    private String tipo_documento;
+    @Column(name = "area_de_activ_pot_dec_555_2")
+    String area_de_activ_pot_dec_555_2; //  varchar(255) NOT NULL,
 
-    @Column(name = "direccion")
-    private String direccion;
 
-    @Column(name = "municipio")
-    private String municipio;
+    @Column(name = "visita_reprogramada_tiene_antec")
+    String visita_reprogramada_tiene_antec; //  varchar(50) NULL,
 
-    @Column(name = "barrio")
-    private String barrio;
 
-    @Column(name = "orig_fid")
-    private Integer orig_fid;
+    @Column(name = "cantidad_de_reprogramaciones")
+    String cantidad_de_reprogramaciones; //  varchar(50) NULL,
 
-    @Column(name = "globalid")
-    private String globalid ;
 
-    @Column(name = "fechavisita")
-    //@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy'T'HH:mm:ss.SSS'Z'", timezone="Europe/Berlin")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
-    private java.sql.Timestamp fechavisita ;
+    @Column(name = "numero_proceso_forest")
+    BigDecimal numero_proceso_forest; //  numeric(38, 8) NOT NULL,
+
+
+    @Column(name = "horario")
+    String horario; //  varchar(255) NOT NULL,
+
+
+    @Column(name = "actividad_principal")
+    String actividad_principal; //  varchar(255) NULL,
+
+
+    @Column(name = "shape")
+    String shape; //  sde.st_point NULL,
+
+
+    @Column(name = "created_user")
+    String created_user; //  varchar(255) NULL,
+
+
+    @Column(name = "created_date")
+    Timestamp created_date; //  timestamp NULL,
+
+
+    @Column(name = "last_edited_user")
+    String last_edited_user; //  varchar(255) NULL,
+
+
+    @Column(name = "last_edited_date")
+    Timestamp last_edited_date; // timestamp NULL
+
+
+
 }

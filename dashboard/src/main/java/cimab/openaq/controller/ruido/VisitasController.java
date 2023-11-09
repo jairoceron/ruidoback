@@ -3,10 +3,13 @@ package cimab.openaq.controller.ruido;
 import cimab.openaq.dataTransferObject.VariableSesionI;
 import cimab.openaq.dto.ruido.ChartBarVertical2D;
 import cimab.openaq.dto.ruido.ChartGenerico;
+import cimab.openaq.entity.etiqoracle.EvaEtiquetado;
 import cimab.openaq.entity.ruido.Pqrs;
+import cimab.openaq.entity.ruido.PqrsDTO;
 import cimab.openaq.entity.ruido.RdoVisita;
 import cimab.openaq.entity.ruido.Visitas;
 import cimab.openaq.model.ConsultaVisita;
+import cimab.openaq.service.etiqoracle.EvaEtiquetadoService;
 import cimab.openaq.service.ruido.PqrsService;
 import cimab.openaq.service.ruido.RuidoService;
 import cimab.openaq.service.ruido.VisitaService;
@@ -23,6 +26,13 @@ public class VisitasController {
     private PqrsService ps;
     private VisitaService vs;
 
+    private EvaEtiquetadoService ees;
+
+    @Autowired
+    public void setEes(EvaEtiquetadoService ees) {
+        this.ees = ees;
+    }
+
     @Autowired
     public void setPs(PqrsService ps) {
         this.ps = ps;
@@ -34,8 +44,9 @@ public class VisitasController {
     }
 
     @RequestMapping({"/consultaVisita"})
-    public List<Pqrs> listFuncionariosRuido(@RequestBody ConsultaVisita consultaVisita ) {
-        List<Pqrs> listPqrs = ps.consultaPqrs(consultaVisita);
+    public List<PqrsDTO> listFuncionariosRuido(@RequestBody ConsultaVisita consultaVisita ) {
+        System.out.println("ingresa a !!**!! :: PERTENECER ::  ");
+        List<PqrsDTO> listPqrs = ps.consultaPqrs(consultaVisita);
         System.out.println("Consulta 0022!!!! GDMPTLB :: " + consultaVisita + " listPqrs " + listPqrs) ;
         return listPqrs;
     }
@@ -87,6 +98,15 @@ public class VisitasController {
         System.out.println("Carga los datos del archivo PRRS de Excel ::: " + listPqrs );
         ps.cargaDataExcelPQRS(listPqrs);
 
+        //
+        return null;
+    }
+
+    @RequestMapping({"/cargaDataExcelEtiquetado"})
+    public List<EvaEtiquetado> cargaDataExcelEtiquetado(@RequestBody List<EvaEtiquetado> listEtaEtiquetado  ) {
+        System.out.println("Carga los datos listEtaEtiquetado de Excel ::: " + listEtaEtiquetado );
+        ees.cargaDataDeEVA(listEtaEtiquetado );
+// 6666666666666666666666666666666666666333333333333
         //
         return null;
     }

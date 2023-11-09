@@ -11,8 +11,13 @@ import java.util.List;
 @Repository
 public interface RdoEstadoRepository extends JpaRepository<RdoEstado, Integer> {
 
-    @Query(value = "select * from sde.rdo_estado order by nombre ",
+    @Query(value = "select \"ESTADO_TRAMITE\" from sde.tramites_pqrs  GROUP BY \"ESTADO_TRAMITE\"",
             nativeQuery = true)
     List<RdoEstado> listEstado();
+
+
+    @Query(value = "select \"ESTADO_TRAMITE\" from sde.tramites_pqrs  GROUP BY \"ESTADO_TRAMITE\"",
+            nativeQuery = true)
+    List<String> listEstadoString();
 
 }

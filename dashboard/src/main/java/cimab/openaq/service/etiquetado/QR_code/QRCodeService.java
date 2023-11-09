@@ -32,7 +32,8 @@ public class QRCodeService {
 
         try {
             //data that we want to store in the QR code
-            String str = "http://etiquetado.ambientebogota.gov.co/holograma/"+placa;
+            String str = "http://34.226.108.5:8082/eva/sda/get-file/" + placa;
+            // String str = "http://etiquetado.ambientebogota.gov.co/holograma/"+placa;
             //path where we want to get QR Code
             // String path = "C:\\Users\\Anubhav\\Desktop\\QRDemo\\Quote.png";
             String path = ruta + "qr_"+  placa + ".png";

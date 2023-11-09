@@ -24,6 +24,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import static cimab.openaq.constantes.ConstantesEtiquetado.QRHOLOGRAMAETIQUETA;
+import static cimab.openaq.constantes.ConstantesEtiquetado.REPORTEGENETIQUETAD;
+
 
 @Data
 @Service
@@ -43,23 +46,40 @@ public class PdfEtiquetadoService {
     public byte[] generarPDFbyte(String placa,
                                  File xsltFile,
                                  String rutaPdfFile,
-                                 String rutaXmlFile
+                                 String rutaXmlFile,
+                                 String tipoPdf,
+                                 String dirQrHolograma
                                  ) {
 
 
-
-
-        String nombreArchivoPdf = rutaPdfFile + "etiquetado"  + placa  + ".pdf";
+        String nombreArchivoPdf = "";
+        if (tipoPdf.equals(REPORTEGENETIQUETAD)) {
+            nombreArchivoPdf = rutaPdfFile + "etiquetado"  + placa  + ".pdf";
+        }
+        if (tipoPdf.equals(QRHOLOGRAMAETIQUETA)) {
+            nombreArchivoPdf = rutaPdfFile + "holograma"  + placa  + ".pdf";
+        }
+       // String nombreArchivoPdf = rutaPdfFile + "etiquetado"  + placa  + ".pdf";
         String xmlFile = rutaXmlFile + placa + ".xml";
 
         System.out.println("Placa        : " + placa );
         System.out.println("rutaPdfFile  : " + rutaPdfFile );
         System.out.println("rutaXmlFile  : " + rutaXmlFile );
+        System.out.println("xmlFile      : " + xmlFile );
 
 
         UtilFileXml uFileXml = new UtilFileXml();
-        String dirQrHolograma = "http://ambientebogota.gov.co/{" + placa + "}/inicio";
-        uFileXml.xmlGenCreate(rutaXmlFile,placa + ".xml",placa,dirQrHolograma);
+       //  String dirQrHolograma = "http://ambientebogota.gov.co/" + placa + "/inicio";
+        //String dirQrHolograma = "http://ambientebogota.gov.co/" + placa + "/inicio";
+//33333333333333
+
+        if (tipoPdf.equals(REPORTEGENETIQUETAD)) {
+            uFileXml.xmlGenCreate(rutaXmlFile, placa + ".xml", placa, dirQrHolograma);
+        }
+        if (tipoPdf.equals(QRHOLOGRAMAETIQUETA)) {
+            System.out.println("Ingresa a crear el holograma .... ");
+            uFileXml.createNewFile(rutaXmlFile, placa + ".xml", placa, dirQrHolograma);
+        }
 
         byte[] flujoDatos = null;
         try {

@@ -2,6 +2,7 @@ package cimab.openaq.controller.ruido;
 
 import cimab.openaq.entity.ruido.Pqrs;
 import cimab.openaq.entity.ruido.RuiSector;
+import cimab.openaq.entity.ruido.RuidoSector;
 import cimab.openaq.service.ruido.RuiSectorService;
 import cimab.openaq.service.ruido.RuidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,18 @@ public class SectorController {
         this.rus = rus;
     }
 
-    @RequestMapping({"/consultaSector"})
-    public List<RuiSector> consultaSector(@RequestBody RuiSector ruiSector ) {
+    @RequestMapping({"/consultaSectorXX"})
+    public List<RuiSector> consultaSectorXX(@RequestBody RuiSector ruiSector ) {
 
         List<RuiSector> listRuiSector = rus.consultaSector();
+        return listRuiSector;
+    }
+
+
+    @RequestMapping({"/consultaSector"})
+    public List<RuidoSector> consultaSector(@RequestBody RuiSector ruiSector ) {
+
+        List<RuidoSector> listRuiSector = rus.consultaRuidoSector();
         return listRuiSector;
     }
 }

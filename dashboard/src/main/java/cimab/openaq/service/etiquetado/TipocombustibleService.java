@@ -7,6 +7,7 @@ import cimab.openaq.repository.etiquetado.TipocombustibleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,7 +21,30 @@ public class TipocombustibleService {
     }
 
     public List<Tipocombustible> listTipoCombustible(int idclasevehiculo) {
-        return vr.listTipoCombustible(idclasevehiculo);
+
+        List<Tipocombustible> listTipoCombustible = new ArrayList<>();
+        Tipocombustible tipoCombustible = new Tipocombustible();
+        tipoCombustible.setNombre("Gasolina");
+        listTipoCombustible.add(tipoCombustible);
+
+
+        tipoCombustible = new Tipocombustible();
+        tipoCombustible.setNombre("Gas");
+        listTipoCombustible.add(tipoCombustible);
+
+
+        tipoCombustible = new Tipocombustible();
+        tipoCombustible.setNombre("Eléctrico");
+        listTipoCombustible.add(tipoCombustible);
+
+        tipoCombustible = new Tipocombustible();
+        tipoCombustible.setNombre("Híbrido");
+        listTipoCombustible.add(tipoCombustible);
+
+        return listTipoCombustible;
+
+
+        //return vr.listTipoCombustible(idclasevehiculo);
     }
 
 }

@@ -2,6 +2,7 @@ package cimab.openaq.entity.ruido;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -57,82 +58,70 @@ public class Pqrs implements Serializable {
     private Integer objectid;
 
 
-    @Column(name="ano")
-    private Integer ano;
-
-    @Column(name="mes")
-    private String mes;
-
-    @Column(name="x")
-    private String x;
-
-    @Column(name="y")
-    private String y;
-
     @Column(name="radicado")
-    private String radicado;
+    String radicado;   // varchar(50) NULL,
 
-    @Column(name="asunto_de_radicacion")
-    private String asunto_de_radicacion;
+    @Column(name="fecha_radicado")
+    Timestamp fecha_radicado;   // timestamp NULL,
 
-    @Column(name="direcciones")
-    private String direcciones;
+    @Column(name="asunto_radicacion")
+    String asunto_radicacion;  // varchar(200) NULL,
 
-    @Column(name="complemento_de_direcciones")
-    private String complemento_de_direcciones;
 
-    @Column(name="razon_social_del_establecimient")
-    private String razon_social_del_establecimient;
+    @Column(name="razon_social_establecimiento")
+    String razon_social_establecimiento;  // varchar(200) NULL,
+
 
     @Column(name="sector_reportado")
-    private String sector_reportado;
+    String sector_reportado; // varchar(50) NULL,
 
-    @Column(name="localidad")
-    private String localidad;
 
-    @Column(name="causante_del_origen_quejoso")
-    private String causante_del_origen_quejoso;
+    @Column(name="entidad_de_control")
+    String entidad_de_control;  // varchar(50) NULL,
 
-    @Column(name="estado_del_tramite")
-    private String estado_del_tramite;
+    @Column(name="peticionario")
+    String peticionario; // varchar(200) NULL,
+
+    @Column(name="estado_tramite")
+    Integer estado_tramite; // int2 NULL,
+
+    @Column(name="observaciones_estado_tramite")
+    String observaciones_estado_tramite; // varchar(50) NULL,
 
     @Column(name="observaciones_generales")
-    private String observaciones_generales;
+    String observaciones_generales; // varchar(256) NULL,
 
-    @Column(name="profesional_asignado_primera_as")
-    private String profesional_asignado_primera_as;
+    @Column(name="profesional_1ra_asignacion")
+    String profesional_1ra_asignacion; // varchar(50) NULL,
 
-    @Column(name="profesional_que_diligencia")
-    private String profesional_que_diligencia;
+    @Column(name="fecha_1ra_asignacion")
+    Timestamp fecha_1ra_asignacion; // timestamp NULL,
 
-    @Column(name="orig_fid")
-    private Integer orig_fid;
 
-    @Column(name="fecha_del_radicado")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
-    private java.sql.Timestamp fecha_del_radicado  ;
+    @Column(name="profesional_2da_asignacion")
+    String profesional_2da_asignacion; // varchar(50) NULL,
 
-    @Column(name="fecha_primera_asignacion")
-    private Timestamp fecha_primera_asignacion  ;
+    @Column(name="fecha_2da_asignacion")
+    Timestamp fecha_2da_asignacion; // timestamp NULL,
 
-    @Column(name="fecha_segunda_asignacion")
-    private Timestamp fecha_segunda_asignacion  ;
+    @Column(name="profesional_diligencia")
+    String profesional_diligencia; // varchar(50) NULL,
 
-    @Column(name="profesional_asignado_segunda_as")
-    private String profesional_asignado_segunda_as;
+    @Column(name="x")
+    BigDecimal x; // numeric(38, 8) NULL,
 
-    @Column(name="globalid")
-    private String globalid;
+    @Column(name="y")
+    BigDecimal y; // numeric(38, 8) NULL,
 
-    @Column(name="entidad_control")
-    private String entidad_control;
+    @Column(name="direccion")
+    String direccion; // varchar(255) NULL,
 
-    @Column(name="observacion_estado_tramite")
-    private String observacion_estado_tramite;
+    @Column(name="complemento_direccion")
+    String complemento_direccion; // varchar(255) NULL,
 
-    @Column(name="profesional_realiza_registro")
-    private String profesional_realiza_registro;
+    @Column(name="localidad")
+    String localidad; // varchar(255) NULL,
 
-   // @Column(name="geom")
-   // private Point  location;
+
+
 }

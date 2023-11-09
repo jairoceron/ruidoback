@@ -1,6 +1,9 @@
 package cimab.openaq.controller.etiquetado;
 
+import cimab.openaq.entity.etiqoracle.Informacionvehiculo;
 import cimab.openaq.entity.etiquetado.Pesovehiculo;
+import cimab.openaq.repository.etiqoracle.InformacionvehiculoRepository;
+import cimab.openaq.service.etiqoracle.InformacionvehiculoService;
 import cimab.openaq.service.etiqoracle.PropietariovehiculoService;
 import cimab.openaq.service.etiquetado.PesovehiculoService;
 import cimab.openaq.service.etiquetado.fileXML.MetadataArchPDF;
@@ -15,6 +18,13 @@ import java.util.List;
 public class GenerarPDFEtiquetadoController {
     private PesovehiculoService ts;
     private PropietariovehiculoService pvs;
+
+
+    private InformacionvehiculoService vs;
+    @Autowired
+    public void setVs(InformacionvehiculoService vs) {
+        this.vs = vs;
+    }
 
     @Autowired
     public void setTs(PesovehiculoService ts) {
@@ -37,11 +47,19 @@ public class GenerarPDFEtiquetadoController {
     }
 
     @RequestMapping({"/generarEtiquetadPrinterHolograma"})
-    public String generarEtiquetadPrinterHolograma(@RequestBody String placa) {
+    public MetadataArchPDF  generarEtiquetadPrinterHolograma(@RequestBody String placa) {
         System.out.println("lo que parece un reves es en realidad Dios preparandome para la plenitud de mi destino ... ");
-        pvs.generarEtiquetadPrinterHolograma(placa);
+        MetadataArchPDF metadataArchPDF = pvs.generarEtiquetadPrinterHolograma(placa);
+        return metadataArchPDF;
 
-        return placa;
+    }
+
+    @RequestMapping({"/consultaDataInfoVehic"})
+    public List<Informacionvehiculo>  consultaDataInfoVehic(@RequestBody Informacionvehiculo infoVehiculo) {
+        System.out.println("Este es el codigo fuente vb.");
+
+        return vs.listInformacionVehiculo(infoVehiculo);
+
 
     }
 

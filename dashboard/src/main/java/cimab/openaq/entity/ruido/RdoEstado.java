@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @NamedQuery(name="RdoEstado.findAll", query="SELECT c FROM RdoAsunto c")
-@Table(name = "Rdo_Estado", schema = "sde")
+@Table(name = "tramites_pqrs", schema = "sde")
 public class RdoEstado  implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -24,11 +24,16 @@ public class RdoEstado  implements Serializable {
     )
 
     @Id
-    @Column(name = "idestado")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAsunto;
 
-    @Column(name = "nombre")
+    @Column(name = "ESTADO_TRAMITE")
     private String nombre;
+
+    @Column(name = "OBSERVACIONES_ESTADO_TRAMITE")
+    private String observacionesEstadoTramite;
+
+
 
 }

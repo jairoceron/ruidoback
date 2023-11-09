@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface  InformacionvehiculoRepository extends JpaRepository<Informacionvehiculo, BigInteger> {
 
-    @Query(value = "select * from eva_infovehic ",
+    @Query(value = "select * from eva_infovehic e ORDER BY IDEVAINFOVEHIC DESC ",
             nativeQuery = true)
     List<Informacionvehiculo> listInformacionvehiculo();
 

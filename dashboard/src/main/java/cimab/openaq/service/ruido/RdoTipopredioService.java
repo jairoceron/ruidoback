@@ -20,5 +20,6 @@ public class RdoTipopredioService {
 
     public List<RdoTipopredio> consultaProfesional() {
         return ar.listTipoPredio();
+     //   return null;
     }
 }
