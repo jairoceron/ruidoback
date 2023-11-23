@@ -95,7 +95,7 @@ public class SbcService {
         List<Object[]> listSensor = new ArrayList<>();
         List<SensorMedicion> listSensorMedicion = new ArrayList<>();
 
-        System.out.println("...__ El valor del TIPO DE ESTADISTICO :: " + promedio);
+
 
         if (promedio == TODOS) {
             listSensor = cs.consultaSesorBajoCosto(marcaSensorX, codigoSensor, fechaInicial, fechaFinal);
@@ -171,71 +171,71 @@ public class SbcService {
 
                 if ((Math.abs( pm10x - pm10_)) > 300) {
                     ls.setCalidad_pm10(-2);
-                    System.out.println( ls.getId() + " ..x0.. Actualizacion  " + ls.getPm10() );
+
                     cs.saveAndFlush(ls);
                 }
                 if ((Math.abs( pm25x - pm25_)) > 300) {
                     ls.setCalidad_pm25(-2);
-                    System.out.println( ls.getId() + " ..x1.. Actualizacion  " + ls.getPm25() );
+
                     cs.saveAndFlush(ls);
                 }
                 if ((Math.abs( pm1x - pm1_)) > 300) {
                     ls.setCalidad_pm1(-2);
-                    System.out.println( ls.getId() + " ..x2.. Actualizacion  " + ls.getPm1() );
+
                     cs.saveAndFlush(ls);
                 }
                 if ((Math.abs( temperaturax - temperatura_)) > 5) {
                     ls.setCalidad_temperatura(-2);
-                    System.out.println( ls.getId() + " ..x2.. Actualizacion  " + ls.getTemperatura() );
+
                     cs.saveAndFlush(ls);
                 }
 
-                // System.out.println("Esta es la calidad de datos xxx " + ls.getPm10() +  " temperatura :: " + ls.getTemperatura() );
+
                 if (ls.getPm10() > 800) {
                    ls.setCalidad_pm10(-1);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 1 " + ls.getPm10() );
+
                    cs.saveAndFlush(ls);
                 }
                  if (ls.getPm25() > 800) {
                     ls.setCalidad_pm25(-1);
-                     System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 2 " + ls.getPm25() );
+
                     cs.saveAndFlush(ls);
                 }
                 if (ls.getPm1() > 500) {
                     ls.setCalidad_pm1(-1);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 3 " + ls.getPm1() );
+
                     cs.saveAndFlush(ls);
                 }
                 //-------------------
                 if (ls.getPm10() < 0 ) {
                     ls.setCalidad_pm10(-2);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 4 " + ls.getPm10() );
+
                     cs.saveAndFlush(ls);
                 }
                 if (ls.getPm25() < 0) {
                     ls.setCalidad_pm25(-2);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 5 " + ls.getPm25() );
+
                     cs.saveAndFlush(ls);
                 }
                 if (ls.getPm1() < 0) {
                     ls.setCalidad_pm1(-2);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 6 " + ls.getPm1() );
+
                     cs.saveAndFlush(ls);
                 }
                 //-------------------
                 if (ls.getTemperatura() > 35) {
                     ls.setCalidad_temperatura(-1);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 4 " + ls.getTemperatura() );
+
                     cs.saveAndFlush(ls);
                 }
                 if (ls.getTemperatura() < -10) {
                     ls.setCalidad_temperatura(-1);
-                    System.out.println( ls.getId() + " Esta es la calidad de datos ..... Actualizacion 5 " + ls.getTemperatura() );
+
                     cs.saveAndFlush(ls);
                 }
             }
         }
-       // System.out.println("Esta es la calidad de datos ..... " + lsv);
+
         return "Ejecucion proceso dia hoy";
     }
 

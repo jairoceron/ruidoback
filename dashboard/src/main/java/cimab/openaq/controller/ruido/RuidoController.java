@@ -52,7 +52,7 @@ public class RuidoController {
                                                        @RequestParam(name = "fechaFinal", defaultValue = "31/08/2018") String fechaFinal
     ) {
 
-        System.out.println("Ingreso al controller ...... " + promedio);
+
         return null;
     }
 
@@ -66,21 +66,20 @@ public class RuidoController {
                                               @RequestParam(name = "fechaFinal", defaultValue = "31/08/2018") String fechaFinal
     ) {
 
-        System.out.println("Ingreso al controller ...... " + promedio);
+
 
         return ts.listFuncionariosRuido();
     }
 
     @RequestMapping({"/hello"})
     public String hello() {
-        System.out.println("ESto es lo mas importante .... ");
+
         return "Hello World";
     }
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        System.out.println("Objeto JSON :: " + authenticationRequest);
-        System.out.println(" :: " + authenticationRequest.getUsername());
+
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())

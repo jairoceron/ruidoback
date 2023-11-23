@@ -141,8 +141,6 @@ public class UtilEntity {
             writer.close();
 
 
-            System.out.println("ARCHIVO ::: " + fileName);
-
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -13,6 +13,29 @@ import java.util.List;
 @Repository
 public interface  EvaEtiquetadoRepository extends JpaRepository<EvaEtiquetado, EvaEtiquetadoPK> {
 
+    @Query(value = "SELECT * FROM EVA_ETIQUETADO WHERE TIPOLOGIAVEHICULAR = :tipologiaVehicular" ,
+            nativeQuery = true)
+    List<EvaEtiquetado> listInformacionvehiculoTipologiaVehicular(String tipologiaVehicular );
+
+    @Query(value = "SELECT * FROM EVA_ETIQUETADO WHERE clasepapa IS NOT NULL AND " +
+            "INDICEETIQUETADO IS NOT NULL " +
+            "   AND CILINDRADA IS NOT NULL AND ESTANDAREMISION IS NOT NULL AND " +
+            "  modelo IS NOT NULL AND combustible IS NOT NULL " +
+            " AND clase IS NOT NULL AND CLASEPAPA IS NOT null " ,
+            nativeQuery = true)
+    List<EvaEtiquetado> listInformacionvehiculoTpVehicular( );
+
+
+    @Query(value = "SELECT * FROM EVA_ETIQUETADO WHERE clasepapa IS NOT NULL AND " +
+            "INDICEETIQUETADO IS NOT NULL " +
+            "   AND CILINDRADA IS NOT NULL AND ESTANDAREMISION IS NOT NULL AND " +
+            "  modelo IS NOT NULL AND combustible IS NOT NULL " +
+            " AND clase IS NOT NULL AND CLASEPAPA IS NOT null " +
+            " and tipologiavehicular = :tipologiaVehicular " ,
+            nativeQuery = true)
+    List<EvaEtiquetado> listInformacionvehiculoTpVehicular( String tipologiaVehicular);
+
+
     @Query(value = "SELECT * FROM EVA_ETIQUETADO ee WHERE  " +
             " upper(COMBUSTIBLE) LIKE %:combustible% " ,
             nativeQuery = true)

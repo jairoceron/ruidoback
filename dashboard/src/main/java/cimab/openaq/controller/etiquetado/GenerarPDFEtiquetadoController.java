@@ -41,14 +41,14 @@ public class GenerarPDFEtiquetadoController {
     public MetadataArchPDF generarPDFetiquetadooo(@RequestBody String placa) {
         MetadataArchPDF metadataArchPDF = pvs.listPropietarioVehiculo(placa);
         String json = "{ \"placa\": \"" + placa  + "\", \"java\": true }";
-        System.out.println("GDMPTLB :: json ..... " + json );
+
         return metadataArchPDF;
 
     }
 
     @RequestMapping({"/generarEtiquetadPrinterHolograma"})
     public MetadataArchPDF  generarEtiquetadPrinterHolograma(@RequestBody String placa) {
-        System.out.println("lo que parece un reves es en realidad Dios preparandome para la plenitud de mi destino ... ");
+
         MetadataArchPDF metadataArchPDF = pvs.generarEtiquetadPrinterHolograma(placa);
         return metadataArchPDF;
 
@@ -56,7 +56,7 @@ public class GenerarPDFEtiquetadoController {
 
     @RequestMapping({"/consultaDataInfoVehic"})
     public List<Informacionvehiculo>  consultaDataInfoVehic(@RequestBody Informacionvehiculo infoVehiculo) {
-        System.out.println("Este es el codigo fuente vb.");
+
 
         return vs.listInformacionVehiculo(infoVehiculo);
 

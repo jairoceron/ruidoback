@@ -28,9 +28,9 @@ public class PesovehiculoController {
 
     @RequestMapping({"/listPesovehiculo"})
     public List<Pesovehiculo> listPesovehiculo(@RequestBody Integer idclasevehiculo) {
-        System.out.println("Si ingresa al servicios ::: Listado estado de listClaseVehiculo ........... " );
+
         List<Pesovehiculo> listPesovehiculo = ts.listPesovehiculo (idclasevehiculo);
-        System.out.println("listPesovehiculo ........... " + listPesovehiculo);
+
         return listPesovehiculo;
 
     }

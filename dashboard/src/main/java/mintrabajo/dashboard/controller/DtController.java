@@ -28,7 +28,7 @@ public class DtController {
 
 
         DashboardX dash = ds.estProcesoGeneral(idFlujoPk,dirTerrito,fechaCorte );
-        System.out.println(" lo que retorna " + dash  );
+
         return dash;
     }
 

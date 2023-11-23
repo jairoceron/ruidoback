@@ -25,9 +25,9 @@ public class PqrsController {
 
     @RequestMapping({"/consultaDirecPqrs"})
     public List<Pqrs> consultaDirecPqrs(@RequestBody ConsultaVisita consultaVisita ) {
-        System.out.println("Consulta Por Direccion :: " + consultaVisita );
+
         List<Pqrs> listPqrs = ps.consultaDirecPqrs(consultaVisita);
-        System.out.println("Resultado :: " + listPqrs );
+
         return listPqrs;
        // return null;
     }

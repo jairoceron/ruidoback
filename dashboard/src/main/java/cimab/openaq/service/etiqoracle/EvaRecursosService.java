@@ -34,7 +34,7 @@ public class EvaRecursosService {
 
     public EvaRecursos recuperaClave(String clave) {
         String osName = System.getProperty("os.name");
-        System.out.println(osName);
+
         if (osName.startsWith("Windows")) {
             osName = "Windows";
         }

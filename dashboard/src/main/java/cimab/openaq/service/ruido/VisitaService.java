@@ -31,19 +31,7 @@ public class VisitaService {
     }
 
     public Visitas guardaVisitaXX(Visitas visitas) {
-        System.out.println(" visitas " + visitas);
-        /*
-        Visitas visitaXX = vr.consultaSiYa_existe(visitas.getRadicado(), visitas.getProfesional_encargado(), visitas.getFechavisita());
-        if (visitaXX == null) {
-            vr.save(visitas);
-        } else {
-            visitas.setId(visitaXX.getId());
-            if (!visitas.equals(visitaXX)) {
-                vr.saveAndFlush(visitas);
-            }
-        }
-return visitas;
-        */
+
         return null;
 
     }
@@ -241,16 +229,11 @@ return visitas;
     }
 
     public List<Visitas>  listConsultaDirecVisita(ConsultaVisita consultaVisita ) {
-        System.out.println("consultaVisita :   " + consultaVisita);
-        List<Visitas>  LVisita = vr.visitasPorDireccion(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getDireccion());
-        System.out.println("xxxxxx:   " + LVisita);
-        return LVisita;
-/*
-        List<Visitas> visitasPorDireccion(@Param("fechaInicial") String fechaInicial,
-                @Param("fechaFinal") String fechaFinal ,
-                @Param("direccion") String direccion);
 
- */
+        List<Visitas>  LVisita = vr.visitasPorDireccion(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getDireccion());
+
+        return LVisita;
+
     }
 
     public List<ChartBarVertical2D>   chart2dTipoPredioCumpliNorma(ConsultaVisita  consultaVisita){
@@ -273,11 +256,11 @@ return visitas;
             ltChar2D.add(chart2D);
         }
 
-        System.out.println("xxxxxx:   " + ltChar2D);
+
 
 
          return ltChar2D;
-        //return null;
+
 
     }
 

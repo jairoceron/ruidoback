@@ -37,14 +37,14 @@ public class PropVehiculoController {
     @RequestMapping({"/guardaPropietarioVehiculo"})
     public Propietariovehiculo guardaPropVehiculo(@RequestBody Propietariovehiculo propietarioVehiculo) {
 
-        System.out.println("Propietario Vehiculo :::: " + propietarioVehiculo) ;
+
         pvs.guardaPropVehiculo(propietarioVehiculo);
         return propietarioVehiculo;
     }
 
     @RequestMapping({"/listaPropietarioVehiculo"})
     public List<Propietariovehiculo> listaPropietarioVehiculo(@RequestBody String placa) {
-        System.out.println("Ingresa a listado prop vehiculo ....... " + placa);
+
 
         List<Propietariovehiculo>  listPropVehiculo = pvs.listaaPropietarioVehiculooo(placa);
 
@@ -54,25 +54,24 @@ public class PropVehiculoController {
     @RequestMapping({"/propietarioVehiculoPlaca"})
     public Propietariovehiculo propietarioVehiculoPlaca(@RequestBody Propietariovehiculo propietarioVehiculo) {
         Propietariovehiculo propietaVehiculoX = pvs.PropietariovehiculoXplaca(propietarioVehiculo.getPlaca());
-        System.out.println("Datos del propietario del vehiculo ... " + propietaVehiculoX );
+
         return propietaVehiculoX;
     }
 
 
     @RequestMapping({"/guardaInformacionVehiculo"})
     public Informacionvehiculo guardaInformacionVehiculo(@RequestBody Informacionvehiculo informacionvehiculo) {
-        System.out.println("ingresa al back :::  guardaInformacionVehiculo " + informacionvehiculo );
+
         ivs.gInfoVeh(informacionvehiculo);
         return informacionvehiculo;
     }
 
     @RequestMapping({"/consultaObjetoPlaca"})
     public Placa consultaObjetoPlaca(@RequestBody String placaSt) {
-// ***************************
-        System.out.println("Deuteronomio 9 ::: ....... consultaObjetoPlaca " +  placaSt);
+
         Placa placa = ivs.consultaObjetoPlaca(placaSt);
 
-        System.out.println("Galatas 1 .. 10 :::  " + placa );
+
         return placa;
     }
 

@@ -6,18 +6,26 @@ import cimab.openaq.entity.ruido.RuiSector;
 import cimab.openaq.entity.ruido.RuidoLocalidad;
 import cimab.openaq.model.ConsultaVisita;
 import cimab.openaq.repository.rmcab.MenuRepository;
+import cimab.openaq.repository.ruido.PqrsRepository;
 import cimab.openaq.repository.ruido.RuiLocalidadRepository;
 import cimab.openaq.repository.ruido.VisitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RuiLocalidadService {
     private RuiLocalidadRepository lr;
+    private PqrsRepository pr;
+
+    @Autowired
+    public void setPr(PqrsRepository pr) {
+        this.pr = pr;
+    }
 
     public List<RuidoLocalidad> listRuidoLocalidad = new ArrayList<>();
 
@@ -165,9 +173,16 @@ public class RuiLocalidadService {
     }
 
     public List<ChartLocalidad> chartLocalidad(ConsultaVisita consultaVisita) {
-        /*
+
         List<ChartLocalidad> listCharLocalidad = new ArrayList<>();
-        List<Object[]> listObjLocalidad = lr.chartLocalidad(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal());
+        Date fechaInicial =new Date(consultaVisita.getFechaInicial().getTime());
+        Date fechaFinal  =new Date(consultaVisita.getFechaFinal().getTime());
+
+// 9999999999999999999999999
+
+   //     pr.consultaPqrsEstramite()
+
+        List<Object[]> listObjLocalidad = lr.chartLocalidad(fechaInicial, fechaFinal);
         for (Object[] objX : listObjLocalidad ) {
             ChartLocalidad chartLocalidad = new ChartLocalidad();
             String localidad = (String)objX[0];
@@ -179,8 +194,8 @@ public class RuiLocalidadService {
 
         return listCharLocalidad;
 
-         */
-        return null;
+
+        // return null;
     }
 
     public List<ChartLocalidad> chartNormatividad(ConsultaVisita consultaVisita) {

@@ -21,7 +21,7 @@ public class MarcaController {
 
     @RequestMapping({"/listMarca"})
     public List<Marca> listMarca(@RequestBody Integer idclasevehiculo) {
-        System.out.println("Si ingresa al servicios ::: listado de marcas ........... " );
+
         List<Marca> listMarca = ts.listMarca(idclasevehiculo);
         // 66666666666666666666666
 
@@ -216,7 +216,7 @@ public class MarcaController {
         marca.setNombre("DAIHATSU");
         listMarca.add(marca);
 
-        System.out.println("Listado marcas ........... " + listMarca);
+
         return listMarca;
 
     }

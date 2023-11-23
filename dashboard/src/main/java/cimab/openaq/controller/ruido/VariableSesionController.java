@@ -38,7 +38,7 @@ public class VariableSesionController {
 
 
     public VariableSesionI listFuncionariosRuido(@RequestBody String username ) {
-        System.out.println("Ingreso al control de usuario...... " + username);
+
         VariableSesionI vSesion = new VariableSesionI();
         vSesion.setUsername(username);
         List<String> modulos = new ArrayList<>();

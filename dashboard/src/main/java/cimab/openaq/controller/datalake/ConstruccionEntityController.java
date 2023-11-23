@@ -22,11 +22,11 @@ public class ConstruccionEntityController {
 
     @RequestMapping({"/generarEntityTableName"})
     public List<AllTabsColumns> generarEntityTableName(@RequestBody String tableName) {
-        System.out.println("CAtegoria servicios ::: Listado estado de listClaseVehiculo ........... " );
+
         tableName =   "GDMPTLB";  // "visitas";        // "pqrs";
         String className =  "Gdmptlb";          //"VisitasOracle";    // "PqrsOracle";
         List<AllTabsColumns> lisAllTabsCol = ts.listAllTabsColumns(tableName, className);
-        System.out.println(">>> goria servicios ::: " + lisAllTabsCol);
+
         return lisAllTabsCol ;
 
     }

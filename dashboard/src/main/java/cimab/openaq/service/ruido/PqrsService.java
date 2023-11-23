@@ -34,23 +34,14 @@ public class PqrsService {
 
     public List<PqrsDTO> consultaPqrs(ConsultaVisita consultaVisita) {
 
-        // List<Pqrs> objects = pr.findAll();
+
         List<Pqrs> listPqrs = null;
-        System.out.println("----- objects :: consulta PROVISIONAL .... "  );
-//****************
+
         List<PqrsDTO> listPqrsDTO = new ArrayList<PqrsDTO>();
 
 
-
-        // return pr.listPqrs(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal());
-
         if (consultaVisita.getVistaSistema() != null) {
             if (consultaVisita.getVistaSistema().equals(CON_PROVISIONAL_ET)) {
-                System.out.println("-  __ INGRESA especifica provisional....  ");
-
-                System.out.println("*** Fecha Inicial  " + consultaVisita.getFechaInicial());
-                System.out.println("*** Fecha Final    " + consultaVisita.getFechaFinal());
-
 
 
                 listPqrs = pr.listPqrs(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), ESTADO_TRAMITE_PROVISIONAL);
@@ -132,24 +123,22 @@ public class PqrsService {
 
 
     public List<Pqrs> consultaDirecPqrs(ConsultaVisita consultaVisita) {
-        System.out.println("Aqui vamos ...... " + consultaVisita);
+
         List<Pqrs> listPqrs= pr.pqrsPorDireccion(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getDireccion());
-        // for (Pqrs pqrs : listPqrs ) {
-            // System.out.println("Asunto: " + pqrs.getAsunto_radicacion());
-       // }
+
         return listPqrs;
     }
 
     public List<Pqrs> consultaPqrsLocalidad(ConsultaVisita consultaVisita){
-        System.out.println("Consulta ::: " + consultaVisita );
+
         return pr.pqrsPorLocalidad(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), consultaVisita.getLocalidad());
     }
 
     public List<Pqrs> consultaPqrsEstramite(ConsultaVisita consultaVisita){
-        System.out.println("Consulta Visita >>> .... " + consultaVisita );
+
 
         int idEstadoTramite = ets.retornaIdEstadoTramite(consultaVisita.getEstadoTramite());
-       // sss333333333333333
+
 
         return pr.consultaPqrsEstramiteVnk(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal(), idEstadoTramite);
     }

@@ -26,18 +26,18 @@ public class RuidoService {
 
     public List<String> listFuncionariosRuido() {
 
-        // System.out.println("SErvicio de ruido .... ");
+
         List<String> listFRuid = vr.listFuncionariosRuido();
-        System.out.println("SErvicio de ruido .... " + listFRuid);
+
         return listFRuid;
     }
 
     public List<String> listGeneraMenu(String usuario) {
 
-        // System.out.println("SErvicio de ruido .... ");
+
 
         List<String> listMenu = mr.listMenuModulo( usuario);
-        System.out.println("SErvicio de ruido .... " + listMenu);
+
         return listMenu;
     }
 

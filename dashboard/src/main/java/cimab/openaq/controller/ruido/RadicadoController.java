@@ -36,7 +36,7 @@ public class RadicadoController {
 
     @RequestMapping({"/updateRadicado"})
     public Pqrs updateRadicado(@RequestBody Pqrs pqrs ) {
-        System.out.println("Si ingresa el update Radicado");
+
         Pqrs pqrsX = rs.guardarRadicado( pqrs);
         return pqrsX;
     }
@@ -45,7 +45,7 @@ public class RadicadoController {
     public Pqrs consultaRadicado(@RequestBody Pqrs pqrs ) {
 
         Pqrs pqrsX = rs.consultaRadicado( pqrs);
-        System.out.println("Consulta si esta llegado GDMPTLB :: " + pqrs + " listPqrs " ) ;
+
         return pqrsX;
     }
 
@@ -73,7 +73,7 @@ public class RadicadoController {
     @RequestMapping({"/consultaOrganismoDeControl"})
     public List<Pqrs> consultaOrganismoDeControl(@RequestBody ConsultaVisita consultaVisita) {
 
-        System.out.println("O r g a n i s m o   d e   C o n t r o l   ...... ");
+
         List<Pqrs> consultaOrganismoDeControl = rs.consultaOrganismoDeControl(consultaVisita);
 
 
@@ -83,7 +83,7 @@ public class RadicadoController {
     @RequestMapping({"/visitaNoEfectivaReprograma"})
     public List<PqrsDTO> visitaNoEfectivaReprograma(@RequestBody ConsultaVisita consultaVisita) {
 
-        System.out.println("Visita NO Efectiva :: Reprogramar   ...... ");
+
         List<PqrsDTO> listVisitaNoEfectiva = rs.visitaNoEfectivaReprograma(consultaVisita);
 
         return listVisitaNoEfectiva;
@@ -92,7 +92,7 @@ public class RadicadoController {
     @RequestMapping({"/visitaPorPeticionario"})
     public List<PqrsDTO> visitaPorPeticionario(@RequestBody ConsultaVisita consultaVisita) {
 
-        System.out.println("Visita visitaPorPeticionario   ...... ");
+
         List<PqrsDTO> listVisitaNoEfectiva = rs.visitaPorPeticionario(consultaVisita);
 
         return listVisitaNoEfectiva;
@@ -101,7 +101,7 @@ public class RadicadoController {
     @RequestMapping({"/visitaPorReporteAntecedente"})
     public List<PqrsDTO> visitaPorReporteAntecedente(@RequestBody ConsultaVisita consultaVisita) {
 
-        System.out.println("Visita visitaPorReporteAntecedente   ...... ");
+
         List<PqrsDTO> listVisitaNoEfectiva = rs.reporteDeAntecedentes(consultaVisita);
         return listVisitaNoEfectiva;
     }
@@ -109,7 +109,7 @@ public class RadicadoController {
     @RequestMapping({"/visitaConsultaNoEsCompetencia"})
     public List<PqrsDTO> visitaConsultaNoEsCompetencia(@RequestBody ConsultaVisita consultaVisita) {
 
-        System.out.println("Visita visitaConsultaNoEsCompetencia   ...... ");
+
         List<PqrsDTO> listVisitaNoEfectiva = rs.visitaConsultaNoEsCompetencia(consultaVisita);
         return listVisitaNoEfectiva;
     }

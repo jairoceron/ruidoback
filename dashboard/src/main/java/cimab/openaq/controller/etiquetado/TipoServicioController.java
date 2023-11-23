@@ -23,10 +23,9 @@ public class TipoServicioController {
 
     @RequestMapping({"/listTipoServicio"})
     public List<Tiposervicio> listTipoServicio(@RequestBody Integer idtiposervicio) {
-        System.out.println("Si ingresa al servicios ::: listado de tipo de servicio ........... " );
+
         List<Tiposervicio> listTipoServicio = ts.listTipoServicio(idtiposervicio);
-        // 66666666666666666666666
-        System.out.println("Listado estado de listClaseVehiculo ........... " + listTipoServicio);
+
         return listTipoServicio;
 
     }

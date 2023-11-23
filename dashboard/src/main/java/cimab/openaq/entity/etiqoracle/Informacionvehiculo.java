@@ -22,7 +22,7 @@ public class Informacionvehiculo {
     @Column(name = "placa")
     String placa;
 
-    @Column(name = "tipologiaVehicular")
+    @Column(name = "TIPOLOGIAVEHICULAR")
     String tipologiaVehicular;
 
     @Column(name = "tipoServicio")
@@ -105,6 +105,8 @@ public class Informacionvehiculo {
 
     @Column(name = "FECHA_VIG_FIN_ETIQUETA")
     Timestamp fecha_VIG_FIN_ETIQUETA;
+
+
 /*
 
 */

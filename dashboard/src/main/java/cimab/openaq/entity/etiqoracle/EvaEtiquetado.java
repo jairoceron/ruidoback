@@ -42,6 +42,9 @@ public class EvaEtiquetado {
     @Column(name = "INDICEETIQUETADO")
     Integer indiceetiquetado;  //  NUMBER(6),
 
+    @Column(name = "TIPOLOGIAVEHICULAR")
+    String tipologiavehicular;
+
     @Column(name = "FE_CO")
     BigDecimal fe_co;  //  NUMBER(10,4),
 

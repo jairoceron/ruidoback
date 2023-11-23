@@ -244,11 +244,11 @@ public class ConsultasListas {
         listMarcaSensor.add(new Parametro(TODOS, "Todas"));
         int claveMarca = 1;
         for (String marca : listaDb) {
-            System.out.println(" MARCA ... " + marca);
+
             listMarcaSensor.add(new Parametro(claveMarca, marca));
             claveMarca++;
         }
-        System.out.println(" listado de marcas ::: ... " + listMarcaSensor);
+
         return listMarcaSensor;
     }
 
@@ -261,7 +261,7 @@ public class ConsultasListas {
         listMarcaSensor.add(paramX);
         int claveMarca = 1;
         for (String marca : listaDb) {
-            System.out.println(" MARCA ... " + marca);
+
             Param paramD = new Param();
             paramD.setId(claveMarca);
             paramD.setValue(marca);
@@ -269,7 +269,7 @@ public class ConsultasListas {
             listMarcaSensor.add(paramD);
             claveMarca++;
         }
-        System.out.println(" listado de marcas ::: ... " + listMarcaSensor);
+
         return listMarcaSensor;
     }
 }

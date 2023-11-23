@@ -97,7 +97,7 @@ public class RdoEstadoTramiteService {
 
     public int retornaIdEstadoTramite(String nombre) {
         inicializarLista();
-        System.out.println("nombre ---->  " + nombre);
+
         RdoEstadoTramite rdoEstadoTramite = listREsTram.stream().filter(c -> c.getNombre().equals(nombre)).findFirst().get();
         return rdoEstadoTramite.getId();
     }

@@ -1,7 +1,10 @@
 package cimab.openaq.controller.etiquetado;
 
+import cimab.openaq.entity.etiqoracle.EvaEtiquetado;
+import cimab.openaq.entity.etiqoracle.Informacionvehiculo;
 import cimab.openaq.entity.etiquetado.Clasevehiculo;
 import cimab.openaq.model.AuthenticationRequest;
+import cimab.openaq.service.etiqoracle.EvaEtiquetadoService;
 import cimab.openaq.service.etiquetado.ClasevehiculoService;
 import cimab.openaq.service.ruido.EstadotramiteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,12 @@ import java.util.List;
 public class ClasevehiculoController {
 
     private ClasevehiculoService ts;
+    private EvaEtiquetadoService es;
+
+    @Autowired
+    public void setEs(EvaEtiquetadoService es) {
+        this.es = es;
+    }
 
     @Autowired
     public void setTs(ClasevehiculoService ts) {
@@ -37,10 +46,30 @@ public class ClasevehiculoController {
     // @ResponseBody
     @RequestMapping({"/listClaseVehiculo"})
     public List<Clasevehiculo> listEstadoTramite() {
-        System.out.println("xxxxx Listado estado de listClaseVehiculo ........... " );
+
         List<Clasevehiculo> listClaseVehiculo = ts.listClaseVehiculos();
-        System.out.println("!!!!!! Listado estado de listClaseVehiculo ........... " + listClaseVehiculo);
+
         return listClaseVehiculo;
+
+    }
+
+    @RequestMapping({"/loadEvaEtiquetado"})
+    public List<EvaEtiquetado> loadEvaEtiquetado() {
+
+        List<EvaEtiquetado>  listEvaEtiquetado = es.listEvaEtiquetado();
+
+
+        return listEvaEtiquetado;
+
+    }
+
+    @RequestMapping({"/loadEvaEtiquetadoConParametro"})
+    public List<EvaEtiquetado> loadEvaEtiquetadoConParametro(@RequestBody Informacionvehiculo informacionVehiculo) {
+
+        List<EvaEtiquetado>  listEvaEtiquetado = es.listEvaEtiquetado(informacionVehiculo);
+
+
+        return listEvaEtiquetado;
 
     }
 

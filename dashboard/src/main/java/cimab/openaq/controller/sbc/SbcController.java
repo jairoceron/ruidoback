@@ -32,7 +32,7 @@ public class SbcController {
                                                        @RequestParam(name = "fechaFinal", defaultValue = "31/08/2018") String fechaFinal
     ) {
 
-        System.out.println("Ingreso al controller ...... " + promedio);
+
         return ts.consultaSesorBajoCosto(marcaSensor, codigoSensor,
                 promedio, variable,
                 fechaInicial, fechaFinal);
@@ -40,13 +40,13 @@ public class SbcController {
 
     @GetMapping(path = "querySensoresPorMarca")
     List<String> querySensoresPorMarca(@RequestParam(name = "marcaSensor", defaultValue = "0") int marcaSensor) {
-        System.out.println("Ingresa al controlador ::: " + marcaSensor);
+
         return ts.querySensoresPorMarca(marcaSensor);
     }
 
     @GetMapping(path = "listaMarcasSensores")
     List<Param> listaMarcasSensores()  {
-        System.out.println("Gracias por todas las bendiciones ......::: " );
+
         return ts.listaMarcasSensores();
     }
 
@@ -59,7 +59,7 @@ public class SbcController {
 
     @GetMapping(path = "calidadDatosSBC")
     String calidadDatosSBC()  {
-        System.out.println("GDMPTLB CalidadDatos..::: " );
+
 
         return ts.calidadDatosSBC();
     }

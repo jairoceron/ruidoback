@@ -38,9 +38,9 @@ public class EstandaremisionController {
 
     @RequestMapping({"/listEstadoEmision"})
     public List<Estandaremision> listEstadoEmision(@RequestBody Integer idclasevehiculo) {
-        System.out.println("Si ingresa al servicios ::: Listado estado de listClaseVehiculo ........... " );
+
         List<Estandaremision> listTipoCombustible = ts.listEstandarEmision(idclasevehiculo);
-        System.out.println("Listado estado de listClaseVehiculo ........... " + listTipoCombustible);
+
         return listTipoCombustible;
 
     }

@@ -51,30 +51,40 @@ public class CategoriaController {
 
     @RequestMapping({"/listCategoria"})
     public List<Categoria> listCategoria(@RequestBody Integer idclasevehiculo) {
-        System.out.println("CAtegoria servicios ::: Listado estado de listClaseVehiculo ........... " );
+
         List<Categoria> listCategoria = ts.listCategoria(idclasevehiculo);
-        System.out.println("Listado estado de listClaseVehiculo ........... " + listCategoria);
+
         return listCategoria ;
 
     }
 
     @RequestMapping({"/listTipologiaVehicular"})
     public List<TipologiaVehicular> listTipologiaVehicular(@RequestBody Integer idclasevehiculo) {
-        System.out.println("tipologia vehicular  ........... " );
+
         List<TipologiaVehicular> listTipologiaVehicular = tvs.listTipologiaVehicular();
-        System.out.println("tipologia vehicular  .......... " + listTipologiaVehicular);
+
         return listTipologiaVehicular;
 
     }
 
     @RequestMapping({"/calculoFactosAmbiVehicular"})
     public EvaEtiquetado calculoFactosAmbiVehicular(@RequestBody Informacionvehiculo infoVehiculo) {
-        System.out.println("CategoriaController :::  calculoFactosAmbiVehicular  ........... " );
+
 
         EvaEtiquetado evaEtiquetado = fva.calculoFactosAmbiVehicular(infoVehiculo);
-        System.out.println("tipologia vehicular  .......... " + evaEtiquetado);
+
         return evaEtiquetado;
                 //9999999999999999999999999999999999999999999999
+    }
+
+    @RequestMapping({"/calculoFactosAmbiVehicularTipologiaVehicular"})
+    public List<EvaEtiquetado> calculoFactosAmbiVehicularTipologiaVehicular(@RequestBody Informacionvehiculo infoVehiculo) {
+
+
+        List<EvaEtiquetado> listEvaEtiquetado = fva.calculoFactosAmbiVehicularTipologiaVehicular(infoVehiculo);
+
+        return listEvaEtiquetado;
+        //9999999999999999999999999999999999999999999999
     }
 
 }

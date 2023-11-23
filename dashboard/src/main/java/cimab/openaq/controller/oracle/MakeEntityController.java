@@ -27,8 +27,7 @@ public class MakeEntityController {
 
            tableName = "HOJAVIDA_HOV";
            String claseTable = "HojavidaSara";
-        // Ya funciona pero se comenta para no sobreescribir la clase :
-        // System.out.println("CAtegoria servicios ::: ....... " + claseTable + " tableName " + claseTable );
+
 
            List<AllTabsColumns> lisAllTabsCol = ts.listAllTabsColumns(tableName, claseTable);
 

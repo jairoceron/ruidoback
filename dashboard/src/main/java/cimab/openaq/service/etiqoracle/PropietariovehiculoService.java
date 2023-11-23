@@ -88,14 +88,12 @@ public class PropietariovehiculoService {
     }
 
     public MetadataArchPDF listPropietarioVehiculo(String placa) {
-        // List<Propietariovehiculo> listPropVehiculo =  vr.listPropietariosVehiculos();
 
-        //hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
         EvaRecursos eRecursos = ers.recuperaClave("sda.etiquetado.xsl.file");
         File xsltFile = new File(eRecursos.getValor());
 
-      //  666666666666666666666666666666666666
+
         EvaRecursos dirQHolog = ers.recuperaClave("sda.etiquetado.chart.directory");
         EvaRecursos xmlDirect = ers.recuperaClave("sda.etiquetado.xml.directory");
 
@@ -114,7 +112,7 @@ public class PropietariovehiculoService {
     }
 
     public Propietariovehiculo PropietariovehiculoXplaca (String placa) {
-        System.out.println("Esta es la placa del propietario del vehiculo " + placa);
+
         Propietariovehiculo propietaVehiculoX = vr.propietariosVehiculos(placa);
         return propietaVehiculoX;
     }
@@ -136,16 +134,15 @@ public class PropietariovehiculoService {
         }
 
         if (propietaVehiculoX == null) {
-            System.out.println("NO .... Encontró el propietario del vehiculo ..... ");
+
             BigInteger idPropVehiculo = vr.valorSecuenciaPropVehiculo();
             propietarioVehiculo.setIdevapropvehi(idPropVehiculo);
         } else {
-            System.out.println("Encontró el propietario del vehiculo ..... ");
+
             BigInteger idProVehicu = propietaVehiculoX.getIdevapropvehi();
             propietarioVehiculo.setIdevapropvehi(idProVehicu);
         }
-        System.out.println(" Propietario Vehiculo " + propietarioVehiculo);
-        System.out.println(" placa " + placa);
+
 
         vr.saveAndFlush(propietarioVehiculo);
         return propietarioVehiculo;
@@ -153,7 +150,7 @@ public class PropietariovehiculoService {
 
     public List<Propietariovehiculo> listaaPropietarioVehiculooo(String placa) {
         List<Propietariovehiculo> listPropVehiculo =  vr.listPropietariosVehiculos();
-        System.out.println(listPropVehiculo);
+
         return listPropVehiculo;
     }
 
@@ -165,29 +162,20 @@ public class PropietariovehiculoService {
 
 
         // ---- paso 1 : generar el codigo qr
-            System.out.println("generarEtiquetadPrinterHolograma :: paso 1a ");
+
             UtilFileXml utilFileXml = new UtilFileXml();
-        System.out.println("generarEtiquetadPrinterHolograma :: paso 2a ");
+
             String fileXmlName = "" + placa + ".xml";
-        System.out.println("generarEtiquetadPrinterHolograma :: paso 3a ");
+
             QRCodeService qrCodeService = new QRCodeService();  // genera la imagen QR code
-        System.out.println("generarEtiquetadPrinterHolograma :: paso 4a ");
+
 
 
 
             qrCodeService.generateCode(eResour.getValor(), placa);  // genera la imagen wiht qr image
-        System.out.println("generarEtiquetadPrinterHolograma :: paso 5a ");
-
-
-
-        // ---- paso 2 : generar el archivo XML <holograma><placa>AAA000</placa><pathimageqr></pathimageqr></holograma>
-
-        // evs.333333333333333333333333333333333
 
 
             utilFileXml.createNewFile(eResour.getValor(),fileXmlName,placa,eResour.getValor());
-        System.out.println("generarEtiquetadPrinterHolograma :: paso 6a ");
-        // ----- paso 3: generar el archifo PDF
 
 
 
@@ -196,10 +184,9 @@ public class PropietariovehiculoService {
 
 
         EvaRecursos pdfDir = ers.recuperaClave("sda.etiquetado.pdf.directory");
-//-----------------
-        // System.out.println("generarEtiquetadPrinterHolograma :: paso 7a ");
+
         pes.generarPDFbyte(placa, xsltFile,pdfDir.getValor(), eResour.getValor(), QRHOLOGRAMAETIQUETA, eResour.getValor()  );
-        System.out.println("generarEtiquetadPrinterHolograma :: paso 8a ");
+
 
         MetadataArchPDF metadataArchPDF = new MetadataArchPDF();
         metadataArchPDF.setDescripcion("PDF etiqueta con Holograma");

@@ -62,10 +62,7 @@ public class PdfEtiquetadoService {
        // String nombreArchivoPdf = rutaPdfFile + "etiquetado"  + placa  + ".pdf";
         String xmlFile = rutaXmlFile + placa + ".xml";
 
-        System.out.println("Placa        : " + placa );
-        System.out.println("rutaPdfFile  : " + rutaPdfFile );
-        System.out.println("rutaXmlFile  : " + rutaXmlFile );
-        System.out.println("xmlFile      : " + xmlFile );
+
 
 
         UtilFileXml uFileXml = new UtilFileXml();
@@ -77,7 +74,7 @@ public class PdfEtiquetadoService {
             uFileXml.xmlGenCreate(rutaXmlFile, placa + ".xml", placa, dirQrHolograma);
         }
         if (tipoPdf.equals(QRHOLOGRAMAETIQUETA)) {
-            System.out.println("Ingresa a crear el holograma .... ");
+
             uFileXml.createNewFile(rutaXmlFile, placa + ".xml", placa, dirQrHolograma);
         }
 
@@ -104,7 +101,7 @@ public class PdfEtiquetadoService {
             //  long duracion = fin - inicio;
 
         } catch (Exception e) {
-            System.out.println(".... generarPDFbyte  ");
+
             e.printStackTrace();
         }
         return flujoDatos;

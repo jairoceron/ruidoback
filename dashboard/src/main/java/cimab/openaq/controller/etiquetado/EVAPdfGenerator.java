@@ -23,7 +23,7 @@ public class EVAPdfGenerator {
     public @ResponseBody byte[] getFile(@PathVariable(name = "placa") String placa) throws IOException {
 
         // https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=145758&dt=S#
-        System.out.println(" ....... genera el PDF, dinámicamente a demanda esta es la placa :: " + placa);
+
 
          InputStream in = getClass().getResourceAsStream("/evaRepositorioPDF/LINUX_COMMAND_LINE.pdf");
         //InputStream in = null;

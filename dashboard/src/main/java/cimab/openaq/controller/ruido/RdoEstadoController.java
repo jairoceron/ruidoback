@@ -41,7 +41,7 @@ public class RdoEstadoController {
 
         List<RdoEstadoTramite> listEstadoTramite = rets.consultaEstado();
         if (listEstadoTramite != null) {
-            System.out.println("Estado del trámite :::: " + listEstadoTramite);
+
         }
 
         return listEstadoTramite;
@@ -49,12 +49,12 @@ public class RdoEstadoController {
 
     @RequestMapping({"/observacionTramite"})
     public List<ObserEstTramite> observacionTramite(@RequestBody RdoEstadoTramite rdoEstado ) {
-        System.out.println("llega a observaciones del tramite !!!!!!! ::: observacionTramite " + rdoEstado);
+
         List<ObserEstTramite> listObsEstadoTramite = rets.listObservacionEstadoTramiteX(rdoEstado.getId());
-        System.out.println("listado ::::: " + listObsEstadoTramite);
+
 
         return listObsEstadoTramite;
-      //  *******************
+
     }
 
     @RequestMapping({"/consultaPorEstadoTramite"})

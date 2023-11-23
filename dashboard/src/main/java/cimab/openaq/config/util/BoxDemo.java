@@ -13,8 +13,7 @@ public class BoxDemo {
         int counter = 0;
         for (Box<U> box: boxes) {
             U boxContents = box.get();
-            System.out.println("Box #" + counter + " contains [" +
-                    boxContents.toString() + "]");
+
             counter++;
         }
     }

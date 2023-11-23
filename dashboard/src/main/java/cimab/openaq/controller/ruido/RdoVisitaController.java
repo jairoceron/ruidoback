@@ -36,7 +36,7 @@ public class RdoVisitaController {
     @RequestMapping({"/consultaVisitasProfesional"})
     public List<RdoVisita> consultaVisitasProfesional(@RequestBody String profesional  ) {
         List<RdoVisita> listRdoVisitaX = ras.consultaVisitaPorProfesional(profesional);
-        System.out.println("lista ... de visitas ::: " + profesional  + " " + listRdoVisitaX);
+
         return listRdoVisitaX;
     }
 }

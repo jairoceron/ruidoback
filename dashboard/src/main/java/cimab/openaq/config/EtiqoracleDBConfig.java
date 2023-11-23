@@ -86,7 +86,7 @@ public class EtiqoracleDBConfig {
 
             Channel channel=session.openChannel("exec");
             channel.connect();
-            System.out.println("la conexion ssh se establecio con exito :::: " + session  + " puerto " + assigned_port );
+
         } catch (com.jcraft.jsch.JSchException dd) {
             dd.printStackTrace();
         }

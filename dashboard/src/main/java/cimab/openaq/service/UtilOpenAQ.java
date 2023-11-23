@@ -77,7 +77,7 @@ public class UtilOpenAQ {
         catch (RemoteException re) {
             re.printStackTrace();
         }
-        // System.out.println(jsonObject);
+
         return jsonObject;
     }
 
@@ -267,21 +267,15 @@ public class UtilOpenAQ {
 
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
-        //    LocalDateTime dateTime = LocalDateTime.of(date, time);
-        //  System.out.println(dateTime);   // 2020-04-27T13:01:29.750616
+
 
         ZoneId zoneId = ZoneId.of("America/Bogota");
         ZonedDateTime zonedDateTime = ZonedDateTime.of(date, time, zoneId);
-        //  System.out.println(zonedDateTime);
+
 
         String cad = zonedDateTime.toString();
         cad = cad.substring(0,19)+ "-05:00";
-        /*
-        int boi = cad.indexOf("[America/Bogota");
-        if (boi>0) {
-            cad = cad.substring(0,boi);
-        }
-*/
+
         return cad;
 
 
@@ -290,33 +284,12 @@ public class UtilOpenAQ {
     private String retornaUTC(String localX)  {
         Date objDate = new Date(); // Sistema actual La fecha y la hora se asignan a objDate
 
-        // String strDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"; // El formato de fecha está especificado
-        // SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto
 
         ZonedDateTime nowUTC = ZonedDateTime.now(ZoneOffset.UTC);
         String local = nowUTC.toString();
         local = local.substring(0,19)+ "Z";
-        //  System.out.println("dm.     " + nowUTC.toString());
-        //  System.out.println("dm.>>>> " + local);
 
-        //  return objSDF.format(objDate);
 
-        // ZoneId zoneId = ZoneId.of("America/Bogota");
-        //  ZoneId zoneId = ZoneId.of("UTC-5");
-        //ZonedDateTime dateTime = ZonedDateTime.of(objDate, zoneId);
-        //  LocalDateTime now = LocalDateTime.now();
-/*
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(date, time, zoneId);
-
-        //  System.out.println(zonedDateTime);
-
-        String cad = zonedDateTime.toString();
-        int boi = cad.indexOf("[America/Bogota");
-        if (boi>0) {
-            cad = cad.substring(0,boi);
-        } */
         return local;
 
 

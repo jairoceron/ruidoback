@@ -25,9 +25,9 @@ public class CilindradaController {
 
     @RequestMapping({"/listCilindrada"})
     public List<Cilindrada> listCilindrada(@RequestBody Integer idclasevehiculo) {
-        System.out.println("Si ingresa al servicios ::: Listado estado de listClaseVehiculo ........... " );
+
         List<Cilindrada> listCilindrada = ts.listCilindrada(idclasevehiculo);
-        System.out.println("Listado estado de listClaseVehiculo ........... " + listCilindrada);
+
         return listCilindrada;
 
     }

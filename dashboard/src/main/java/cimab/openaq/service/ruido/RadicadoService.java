@@ -230,8 +230,6 @@ public List<ChartGenerico> chartEstadoTramite(ConsultaVisita consultaVisita) {
 }
 
     public List<ChartGenerico> chartNoEsCompetencia(ConsultaVisita consultaVisita) {
-        System.out.println("RadicadoService.java fecha inicial " + consultaVisita.getFechaInicial() );
-        System.out.println("RadicadoService.java fecha final " + consultaVisita.getFechaFinal() );
 
         List<Object[]> listChartEsTramite = pqr.chartNoEsCompetencia(consultaVisita.getFechaInicial(), consultaVisita.getFechaFinal());
         List<ChartGenerico> listCharEstTramite = new ArrayList<>();
@@ -269,8 +267,6 @@ public List<ChartGenerico> chartEstadoTramite(ConsultaVisita consultaVisita) {
 
     public List<PqrsDTO> visitaConsultaNoEsCompetencia (ConsultaVisita consultaVisita) {
 
-        System.out.println("!!!!!!!!!!!!!!!! visitaConsultaNoEsCompetencia " + consultaVisita );
-        System.out.println("!!!!!!!!!!!!!!!! ESTADO_TRAMITE_NO_ES_COMPETENCIA " + ESTADO_TRAMITE_NO_ES_COMPETENCIA );
 
         List<Pqrs> listPqr = pqr.visitaConsultaNoEsCompetencia(consultaVisita.getFechaInicial(),
                 consultaVisita.getFechaFinal(),
@@ -289,12 +285,12 @@ public List<ChartGenerico> chartEstadoTramite(ConsultaVisita consultaVisita) {
             listPqrDTO.add(pqrsDTO);
         }
         return listPqrDTO;
-        // ffffffffffffffffffffffffffffffffffffffffff
+
     }
 
     public List<PqrsDTO> reporteDeAntecedentes (ConsultaVisita consultaVisita) {
 
-        System.out.println(" CONSULTA VISITA " + consultaVisita );
+
         List<Pqrs> listPqr = pqr.reporteDeAntecedentes(consultaVisita.getFechaInicial(),
                 consultaVisita.getFechaFinal(),
                 Integer.valueOf(consultaVisita.getEstadoTramite()).intValue(),
@@ -334,13 +330,13 @@ public List<ChartGenerico> chartEstadoTramite(ConsultaVisita consultaVisita) {
         List<PqrsDTO> listPqrsDTO  = new ArrayList<>();
         FechaVencimiento fv = new FechaVencimiento();
         for ( Visitas visita : listVisita) {
-            System.out.println("Visita ::  " +   visita);
+
 
             String chorizoRadicados = visita.getRadicado_atendido();
             StringTokenizer st = new StringTokenizer(chorizoRadicados,"; ");
             while (st.hasMoreTokens()) {
                 String radicado = st.nextToken();
-               // System.out.println();
+
                 PqrsDTO pqrsDTO = new PqrsDTO();
                 pqrsDTO.setRadicado(radicado);
 

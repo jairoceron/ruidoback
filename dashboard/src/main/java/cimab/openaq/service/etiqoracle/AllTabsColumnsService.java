@@ -27,12 +27,10 @@ public class AllTabsColumnsService {
     public List<AllTabsColumns> listAllTabsColumns(String tableName , String claseTable) {
 
 
-        System.out.println("______________ " + tableName.toUpperCase());
+
         List<AllTabsColumns> listAllTabsColumns = vr.listAllTabsColumnsRuido(); // tableName.toUpperCase()
         List<String> listLlavePrimaria = vr.llavePrimaria(tableName);
 
-        System.out.println("Si pasa por acá:  tableName :::. " + tableName );
-        System.out.println("listAllTabsColumns :::. " + listAllTabsColumns );
 
         UtilEntity utilEntity = new UtilEntity();
         String paqueteEntity = Constantes.PACKG_ENTITY_SARA;

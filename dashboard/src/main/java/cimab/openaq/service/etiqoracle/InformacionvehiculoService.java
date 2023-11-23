@@ -18,6 +18,7 @@ import cimab.openaq.service.etiquetado.generarPDF.PdfEtiquetadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.math.BigInteger;
@@ -57,7 +58,7 @@ public class InformacionvehiculoService {
 
         String placa = informacionvehiculo.getPlaca();
 
-       // System.out.println("InformacionVehiculo ::: " + informacionvehiculo);
+
 
         Informacionvehiculo informacionvehiculoX = vr.informacionvehiculo(placa);
         if (informacionvehiculoX == null) {
@@ -67,7 +68,7 @@ public class InformacionvehiculoService {
             BigInteger idInfoVe = informacionvehiculoX.getIdevainfovehic();
             informacionvehiculo.setIdevainfovehic(idInfoVe);
         }
-//        System.out.println("HIzo el agua :: " + informacionvehiculo);
+
 
 
         EvaEtiquetado factorAmbiVehicular = fav.calculoFactosAmbiVehicular(informacionvehiculo);
@@ -76,6 +77,13 @@ public class InformacionvehiculoService {
             informacionvehiculo.setColor_ETIQUETA(factorAmbiVehicular.getEtiquetado());
         }
         vr.saveAndFlush(informacionvehiculo);
+
+
+        // invocacion How to Call or Consume External API in Spring Boot?
+        String uri = "http://localhost:5000/fuelConsumption/hibrid/carBrand";
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+
 
         return informacionvehiculo;
     }

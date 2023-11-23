@@ -31,13 +31,13 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        System.out.println("usuario ::::   >  " + username);
+
         /*
         List<User> listUsers = ur.listaUsuarios();
-        System.out.println(listUsers);
+
 
 //        List<Modulousuario> listModuloUsu = mr.listModuloUsu(s);
- //       System.out.println(listModuloUsu);
+
 
         return new org.springframework.security.core.userdetails.User("foo", "foo",
                 new ArrayList<>());

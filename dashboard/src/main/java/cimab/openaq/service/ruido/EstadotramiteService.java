@@ -39,9 +39,9 @@ public class EstadotramiteService {
 
     public List<Estadotramite> listEstadoTramite() {
 
-        // System.out.println("SErvicio de ruido .... ");
+
         List<Estadotramite> listEsTr = vr.listEstadoTramite();
-        System.out.println("Lista Estado Trámite .... " + listEsTr);
+
         return listEsTr;
     }
 

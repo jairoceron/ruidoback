@@ -45,27 +45,28 @@ public class RuiLocalidadController {
 
     @RequestMapping({"/consultaPorLocalidad"})
     public List<Pqrs> consultaPorLocalidad(@RequestBody ConsultaVisita consultaVisita  ) {
-        System.out.println("C O N S U L T A   P O R   L O C A L I D A D");
+
         List<Pqrs> listPqrs = ps.consultaPqrsLocalidad(consultaVisita);
-        System.out.println(listPqrs);
+
         return listPqrs;
-      //  return null;
+
     }
 
     @RequestMapping({"/chartlocalidad"})
     public List<ChartLocalidad> chartLocalidadList(@RequestBody ConsultaVisita consultaVisita ) {
 
-        System.out.println("Consulta localidad ... " + consultaVisita) ;
+
         List<ChartLocalidad> listChartLocalidad = rls.chartLocalidad(consultaVisita);
+
         return listChartLocalidad;
     }
 
     @RequestMapping({"/chartNormatividad"})
     public List<ChartLocalidad> chartNormatividad(@RequestBody ConsultaVisita consultaVisita ) {
 
-        System.out.println("Consulta CUMPLIMIENTO NORMATIVO ... " + consultaVisita) ;
+
         List<ChartLocalidad> listChartLocalidad = rls.chartNormatividad(consultaVisita);
-        System.out.println("Esto es lo que retorna esto ::::: " + listChartLocalidad);
+
         return listChartLocalidad;
     }
 

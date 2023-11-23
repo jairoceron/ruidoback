@@ -3,10 +3,13 @@ package cimab.openaq.repository.sbc;
 import cimab.openaq.entity.rmcab.Variableambiental;
 import cimab.openaq.entity.sbc.Sensoresvariable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -152,4 +155,63 @@ public interface SensoresvariableRepository extends JpaRepository< Sensoresvaria
     List<Sensoresvariable> consultaCalidadAire(String diaInicial, String diaFinal) ;
 
 
+
+    @Query(value = "select * from sensores_variable where pm1 > :limSuperior",
+            nativeQuery = true)
+    List<Sensoresvariable> limiteSuperiorPM10(int limSuperior) ;
+
+    @Query(value = "select count(1) from sensores_variable where pm1 > :limSuperior",
+            nativeQuery = true)
+    Integer cuentaPM10(int limSuperior) ;
+
+    @Modifying
+    @Transactional
+    @Query(value = "update sensores_variable set calidad_pm1 = -1 where pm1 > :limSuperior ",
+            nativeQuery = true)
+    void actualizarCalidadPm1(int limSuperior) ;
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "update sensores_variable set calidad_pm25 = -1 where pm25 > :limSuperior ",
+            nativeQuery = true)
+    void actualizarCalidadPm25(int limSuperior) ;
+
+    @Modifying
+    @Transactional
+    @Query(value = "update sensores_variable set calidad_pm10 = -1 where pm10 > :limSuperior ",
+            nativeQuery = true)
+    void actualizarCalidadPm10(int limSuperior) ;
+
+    @Modifying
+    @Transactional
+    @Query(value = "update sensores_variable set calidad_pm1 = -2 where pm1  < 0 ",
+            nativeQuery = true)
+    void actualizarCalidadValorNegativoPm1(int limSuperior) ;
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "update sensores_variable set calidad_pm25 = -2 where pm25  < 0 ",
+            nativeQuery = true)
+    void actualizarCalidadValorNegativoPm25(int limSuperior) ;
+
+    @Modifying
+    @Transactional
+    @Query(value = "update sensores_variable set calidad_pm10 = -2 where pm10 < 0 ",
+            nativeQuery = true)
+    void actualizarCalidadValorNegativoPm10(int limSuperior) ;
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "select  * " +
+    " from sensores_variable where medicion_fecha between :fechaInicial and :fechaFinal " +
+    " order by  sensor_codigo, sensor_marca , medicion_fecha",
+            nativeQuery = true)
+    List<Sensoresvariable>  consultaGrupoConsecutivosMismaData(Timestamp fechaInicial, Timestamp fechaFinal) ;
+
+
+    // and p.fecha_radicado between :fechaInicial and  :fechaFinal
+// 999999999999999999999999999999999999999
 }

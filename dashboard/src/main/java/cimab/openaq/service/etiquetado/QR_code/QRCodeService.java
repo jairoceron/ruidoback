@@ -44,8 +44,7 @@ public class QRCodeService {
             hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             //invoking the user-defined method that creates the QR code
             generateQRcode(str, path, charset, hashMap, 100, 100);//increase or decrease height and width accodingly
-            //prints if the QR code is generated
-            System.out.println("QR Code created successfully.");
+
         } catch (WriterException ss) {
             ss.printStackTrace();
         } catch (IOException ss) {

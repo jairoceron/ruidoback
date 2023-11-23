@@ -36,7 +36,7 @@ public class EstadotramiteController {
     ) {
 
         List<Estadotramite> listEstTramit = ts.listEstadoTramite();
-        System.out.println("Listado estado de tramite ........... " + listEstTramit);
+
         return listEstTramit;
     }
 }

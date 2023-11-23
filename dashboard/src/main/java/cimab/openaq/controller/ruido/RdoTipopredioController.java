@@ -51,9 +51,9 @@ public class RdoTipopredioController {
 
     @RequestMapping({"/consultaPorTipoPredioVisita"})
     public List<Pqrs> consultaPorTipoPredioVisita(@RequestBody ConsultaVisita consultaVisita ) {
-        System.out.println("ConsultaVisita :: " + consultaVisita);
+
         List<Pqrs> listPqrsTipopredio = pqs.consultaTipoPredio(consultaVisita);
         return listPqrsTipopredio;
-       // return null;
+
     }
 }
